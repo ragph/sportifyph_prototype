@@ -118,7 +118,7 @@ const CoachCreateSession = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-md mx-auto">
+      <div className="max-w-lg mx-auto">
         <PageHeader title="Create Session" module="coach" />
 
         <div className="p-4 space-y-6">

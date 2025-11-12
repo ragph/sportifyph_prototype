@@ -168,7 +168,7 @@ const OrganizerNotifications = () => {
         settingsPath="/organizer/settings"
       />
 
-      <div className="max-w-md mx-auto">
+      <div className="max-w-lg mx-auto">
         <div className="px-4 py-4">
           <div className="mb-4">
             {/* Filter Tabs */}

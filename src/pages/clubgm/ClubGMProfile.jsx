@@ -56,7 +56,7 @@ const ClubGMProfile = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-md mx-auto p-4 space-y-6">
+      <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Profile Header */}
         <div className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden">
           <div className="h-24 bg-gradient-to-r from-orange-600 to-amber-600"></div>

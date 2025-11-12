@@ -100,7 +100,7 @@ const CoachEditProfile = () => {
     <div className="min-h-screen bg-dark-bg pb-20">
       <PageHeader title="Edit Profile" backPath="/coach/profile" />
 
-      <div className="max-w-md mx-auto p-4">
+      <div className="max-w-lg mx-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Profile Picture */}
           <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">

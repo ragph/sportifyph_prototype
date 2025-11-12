@@ -94,7 +94,7 @@ const ClubGMSubscription = () => {
     <div className="min-h-screen bg-dark-bg pb-20">
       <PageHeader title="Subscription Plans" backPath="/clubgm/dashboard" />
 
-      <div className="max-w-md mx-auto px-4 py-6 space-y-6">
+      <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
         {/* Trial Banner */}
         {trialInfo.isActive && (
           <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-xl p-6 text-white">

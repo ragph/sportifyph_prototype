@@ -27,7 +27,7 @@ const PageHeader = ({
 
   return (
     <div className="bg-dark-bg-tertiary border-b border-dark-border sticky top-0 z-50">
-      <div className="max-w-md mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-lg mx-auto px-4 py-4 flex items-center justify-between">
         {showBack ? (
           <button
             onClick={handleBackClick}

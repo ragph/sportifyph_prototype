@@ -119,7 +119,7 @@ const ClubGMNotifications = () => {
         backPath="/clubgm/dashboard"
       />
 
-      <div className="max-w-md mx-auto">
+      <div className="max-w-lg mx-auto">
         {/* Filters */}
         <div className="bg-dark-bg-tertiary border-b border-dark-border px-4 py-3 sticky top-14 z-10">
           <div className="flex items-center space-x-2 overflow-x-auto pb-2">

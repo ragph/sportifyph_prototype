@@ -103,7 +103,7 @@ const Signup = () => {
     <div className="min-h-screen bg-dark-bg flex flex-col">
       {/* Header */}
       <div className="bg-dark-bg-tertiary shadow-sm">
-        <div className="max-w-md mx-auto px-4 py-4 flex items-center">
+        <div className="max-w-lg mx-auto px-4 py-4 flex items-center">
           <button onClick={() => navigate('/login')} className="p-2 hover:bg-dark-bg-hover rounded-full">
             <IoArrowBack className="text-xl text-dark-text" />
           </button>
@@ -117,7 +117,7 @@ const Signup = () => {
 
       {/* Content */}
       <div className="flex-1 flex items-center justify-center px-4 py-8">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-lg">
           <div className="bg-dark-bg-tertiary rounded-2xl shadow-xl p-8">
             <div className="text-center mb-8">
               <h2 className="text-2xl font-bold text-dark-text mb-2">Create Account</h2>

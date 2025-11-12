@@ -126,7 +126,7 @@ const SponsorNotifications = () => {
         backPath="/sponsor/dashboard"
       />
 
-      <div className="max-w-md mx-auto">
+      <div className="max-w-lg mx-auto">
         <div className="p-4">
           {/* Filters */}
           <div className="flex space-x-2 overflow-x-auto pb-2 mb-4">

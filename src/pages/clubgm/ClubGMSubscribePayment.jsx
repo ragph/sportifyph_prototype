@@ -119,7 +119,7 @@ const ClubGMSubscribePayment = () => {
     <div className="min-h-screen bg-dark-bg pb-20">
       <PageHeader title="Subscribe" backPath="/clubgm/subscription" />
 
-      <div className="max-w-md mx-auto p-4">
+      <div className="max-w-lg mx-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Plan Summary */}
           <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-xl p-6 text-white shadow-lg">

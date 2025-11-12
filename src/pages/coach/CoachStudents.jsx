@@ -47,7 +47,7 @@ const CoachStudents = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-md mx-auto p-4 space-y-4">
+      <div className="max-w-lg mx-auto p-4 space-y-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-dark-text">My Students</h1>
         <span className="text-sm text-dark-text-secondary">{students.length} Active</span>

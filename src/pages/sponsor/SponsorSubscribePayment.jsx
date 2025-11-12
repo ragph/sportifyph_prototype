@@ -120,7 +120,7 @@ const SponsorSubscribePayment = () => {
     <div className="min-h-screen bg-dark-bg pb-6">
       <PageHeader title="Complete Payment" backPath="/sponsor/subscription" />
 
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto px-4 py-6 space-y-6">
+      <form onSubmit={handleSubmit} className="max-w-lg mx-auto px-4 py-6 space-y-6">
         {/* Plan Summary */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
           <h2 className="text-lg font-bold mb-4">{selectedPlan.name}</h2>

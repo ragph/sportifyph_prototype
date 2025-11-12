@@ -88,7 +88,7 @@ const OrganizerRevenue = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-md mx-auto p-4 space-y-6">
+      <div className="max-w-lg mx-auto p-4 space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-dark-text">Revenue</h1>
         <button className="bg-purple-600 hover:bg-purple-700 text-white rounded-lg px-4 py-2 font-semibold transition-colors flex items-center space-x-2">

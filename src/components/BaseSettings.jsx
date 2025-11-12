@@ -8,7 +8,6 @@ import LogoutButton from './LogoutButton'
 import LogoutModal from './LogoutModal'
 
 const BaseSettings = ({
-  moduleName,
   moduleColor,
   backPath,
   settingsSections,
@@ -45,7 +44,7 @@ const BaseSettings = ({
         backPath={backPath}
       />
 
-      <div className="max-w-md mx-auto p-4 space-y-6">
+      <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Settings Sections */}
         {settingsSections.map((section, sectionIndex) => (
           <SettingsSection key={sectionIndex} title={section.title}>

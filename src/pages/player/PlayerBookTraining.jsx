@@ -204,7 +204,7 @@ const PlayerBookTraining = () => {
     <div className="min-h-screen bg-dark-bg pb-20">
       <PageHeader title="Book Training" onBackClick={handleBackClick} />
 
-      <div className="max-w-md mx-auto p-4">
+      <div className="max-w-lg mx-auto p-4">
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">

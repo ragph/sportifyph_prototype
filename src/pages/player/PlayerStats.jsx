@@ -146,7 +146,7 @@ const PlayerStats = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-md mx-auto p-4 space-y-6">
+      <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-dark-text">Statistics</h1>

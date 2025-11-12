@@ -60,7 +60,7 @@ const TemplateDashboard = () => {
 
   return (
     <div className={`min-h-screen bg-gradient-to-br ${theme.bgGradient} pb-20`}>
-      <div className="max-w-md mx-auto p-4 space-y-6">
+      <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* STEP 5: Update welcome banner */}
         <WelcomeBanner
           userName="John Doe"

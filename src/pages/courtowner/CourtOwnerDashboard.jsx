@@ -13,6 +13,8 @@ import {
 import DashboardWelcomeBanner from '../../components/DashboardWelcomeBanner'
 import SubscriptionBanner from '../../components/SubscriptionBanner'
 import QuickActions from '../../components/QuickActions'
+import SurveySection from '../../components/SurveySection'
+import { surveys } from '../../data/surveyData'
 
 const CourtOwnerDashboard = () => {
   const navigate = useNavigate()
@@ -109,7 +111,7 @@ const CourtOwnerDashboard = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-md mx-auto p-4 space-y-6">
+      <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Welcome Banner */}
         <DashboardWelcomeBanner
           userName="Elite Sports Center"
@@ -188,6 +190,9 @@ const CourtOwnerDashboard = () => {
             ))}
           </div>
         </div>
+
+        {/* Surveys & Rewards */}
+        <SurveySection surveys={surveys} module="courtowner" />
       </div>
     </div>
   )

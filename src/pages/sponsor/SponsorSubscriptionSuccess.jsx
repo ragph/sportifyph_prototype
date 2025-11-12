@@ -29,7 +29,7 @@ const SponsorSubscriptionSuccess = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
+      <div className="max-w-lg w-full">
         <div className="bg-dark-bg-tertiary rounded-2xl shadow-xl p-8 text-center">
           {/* Success Icon */}
           <div className="mb-6">

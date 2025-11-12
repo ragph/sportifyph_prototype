@@ -33,7 +33,7 @@ const TemplateLayout = () => {
     <div className="min-h-screen bg-dark-bg">
       {/* Top Header */}
       <div className="fixed top-0 left-0 right-0 bg-dark-bg-tertiary border-b border-dark-border z-10">
-        <div className="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between">
           <img
             src="/images/SPORTIFY-PH-LOGO.png"
             alt="Sportify PH Logo"
@@ -64,7 +64,7 @@ const TemplateLayout = () => {
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-dark-bg-tertiary border-t border-dark-border z-20">
-        <div className="max-w-md mx-auto px-2 py-2">
+        <div className="max-w-lg mx-auto px-2 py-2">
           <div className="flex items-center justify-around">
             {navItems.map((item) => {
               const IconComponent = item.icon

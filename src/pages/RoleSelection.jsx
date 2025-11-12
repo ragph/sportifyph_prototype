@@ -72,7 +72,7 @@ const RoleSelection = () => {
     <div className="min-h-screen bg-dark-bg flex flex-col">
       {/* Header */}
       <div className="bg-dark-bg-tertiary shadow-sm">
-        <div className="max-w-md mx-auto px-4 py-6">
+        <div className="max-w-lg mx-auto px-4 py-6">
           <div className="flex justify-center mb-2">
             <img
               src="/images/SPORTIFY-PH-LOGO.png"
@@ -85,7 +85,7 @@ const RoleSelection = () => {
 
       {/* Content */}
       <div className="bg-dark-bg flex-1 flex flex-col items-center justify-center p-4">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-lg">
           <div className="text-center mb-8">
             <h3 className="text-xl font-bold text-dark-text">
               Select Your Role
@@ -138,7 +138,7 @@ const RoleSelection = () => {
 
       {/* Footer */}
       <div className="bg-brand-primary border-t border-dark-border py-8">
-        <div className="max-w-md mx-auto px-4">
+        <div className="max-w-lg mx-auto px-4">
           <p className="text-center text-white text-xs mb-0">
             © 2024 Sportify PH. All rights reserved.
           </p>

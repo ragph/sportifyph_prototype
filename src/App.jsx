@@ -19,8 +19,11 @@ import PlayerBookTraining from './pages/player/PlayerBookTraining'
 import PlayerSubscription from './pages/player/PlayerSubscription'
 import PlayerSubscribePayment from './pages/player/PlayerSubscribePayment'
 import PlayerSubscriptionSuccess from './pages/player/PlayerSubscriptionSuccess'
+import PlayerSurvey from './pages/player/PlayerSurvey'
+import PlayerTournamentDetails from './pages/player/PlayerTournamentDetails'
 
 // Coach pages
+import CoachSurvey from './pages/coach/CoachSurvey'
 import CoachLayout from './pages/coach/CoachLayout'
 import CoachDashboard from './pages/coach/CoachDashboard'
 import CoachProfile from './pages/coach/CoachProfile'
@@ -37,6 +40,7 @@ import CoachSubscribePayment from './pages/coach/CoachSubscribePayment'
 import CoachSubscriptionSuccess from './pages/coach/CoachSubscriptionSuccess'
 
 // Organizer pages
+import OrganizerSurvey from './pages/organizer/OrganizerSurvey'
 import OrganizerLayout from './pages/organizer/OrganizerLayout'
 import OrganizerDashboard from './pages/organizer/OrganizerDashboard'
 import OrganizerProfile from './pages/organizer/OrganizerProfile'
@@ -51,6 +55,7 @@ import OrganizerSubscribePayment from './pages/organizer/OrganizerSubscribePayme
 import OrganizerSubscriptionSuccess from './pages/organizer/OrganizerSubscriptionSuccess'
 
 // Club GM pages
+import ClubGMSurvey from './pages/clubgm/ClubGMSurvey'
 import ClubGMLayout from './pages/clubgm/ClubGMLayout'
 import ClubGMDashboard from './pages/clubgm/ClubGMDashboard'
 import ClubGMProfile from './pages/clubgm/ClubGMProfile'
@@ -65,6 +70,7 @@ import ClubGMSubscribePayment from './pages/clubgm/ClubGMSubscribePayment'
 import ClubGMSubscriptionSuccess from './pages/clubgm/ClubGMSubscriptionSuccess'
 
 // Court Owner pages
+import CourtOwnerSurvey from './pages/courtowner/CourtOwnerSurvey'
 import CourtOwnerLayout from './pages/courtowner/CourtOwnerLayout'
 import CourtOwnerDashboard from './pages/courtowner/CourtOwnerDashboard'
 import CourtOwnerProfile from './pages/courtowner/CourtOwnerProfile'
@@ -79,6 +85,7 @@ import CourtOwnerSubscribePayment from './pages/courtowner/CourtOwnerSubscribePa
 import CourtOwnerSubscriptionSuccess from './pages/courtowner/CourtOwnerSubscriptionSuccess'
 
 // Sponsor pages
+import SponsorSurvey from './pages/sponsor/SponsorSurvey'
 import SponsorLayout from './pages/sponsor/SponsorLayout'
 import SponsorDashboard from './pages/sponsor/SponsorDashboard'
 import SponsorProfile from './pages/sponsor/SponsorProfile'
@@ -116,9 +123,11 @@ function App() {
         <Route path="/player/edit-profile" element={<PlayerEditProfile />} />
         <Route path="/player/settings" element={<PlayerSettings />} />
         <Route path="/player/notifications" element={<PlayerNotifications />} />
+        <Route path="/player/tournaments/:tournamentId" element={<PlayerTournamentDetails />} />
         <Route path="/player/join-tournament/:id?" element={<PlayerJoinTournament />} />
         <Route path="/player/book-court" element={<PlayerBookCourt />} />
         <Route path="/player/book-training" element={<PlayerBookTraining />} />
+        <Route path="/player/survey/:surveyId" element={<PlayerSurvey />} />
         <Route path="/player/subscription" element={<PlayerSubscription />} />
         <Route path="/player/subscribe-payment/:planId" element={<PlayerSubscribePayment />} />
         <Route path="/player/subscription-success" element={<PlayerSubscriptionSuccess />} />
@@ -139,6 +148,7 @@ function App() {
         <Route path="/coach/sessions/create" element={<CoachCreateSession />} />
         <Route path="/coach/settings" element={<CoachSettings />} />
         <Route path="/coach/notifications" element={<CoachNotifications />} />
+        <Route path="/coach/survey/:surveyId" element={<CoachSurvey />} />
         <Route path="/coach/subscription" element={<CoachSubscription />} />
         <Route path="/coach/subscribe-payment/:planId" element={<CoachSubscribePayment />} />
         <Route path="/coach/subscription-success" element={<CoachSubscriptionSuccess />} />
@@ -157,6 +167,7 @@ function App() {
         <Route path="/organizer/edit-profile" element={<OrganizerEditProfile />} />
         <Route path="/organizer/settings" element={<OrganizerSettings />} />
         <Route path="/organizer/notifications" element={<OrganizerNotifications />} />
+        <Route path="/organizer/survey/:surveyId" element={<OrganizerSurvey />} />
         <Route path="/organizer/subscription" element={<OrganizerSubscription />} />
         <Route path="/organizer/subscribe-payment/:planId" element={<OrganizerSubscribePayment />} />
         <Route path="/organizer/subscription-success" element={<OrganizerSubscriptionSuccess />} />
@@ -175,6 +186,7 @@ function App() {
         <Route path="/clubgm/edit-profile" element={<ClubGMEditProfile />} />
         <Route path="/clubgm/settings" element={<ClubGMSettings />} />
         <Route path="/clubgm/notifications" element={<ClubGMNotifications />} />
+        <Route path="/clubgm/survey/:surveyId" element={<ClubGMSurvey />} />
         <Route path="/clubgm/subscription" element={<ClubGMSubscription />} />
         <Route path="/clubgm/subscribe-payment/:planId" element={<ClubGMSubscribePayment />} />
         <Route path="/clubgm/subscription-success" element={<ClubGMSubscriptionSuccess />} />
@@ -193,6 +205,7 @@ function App() {
         <Route path="/courtowner/edit-profile" element={<CourtOwnerEditProfile />} />
         <Route path="/courtowner/settings" element={<CourtOwnerSettings />} />
         <Route path="/courtowner/notifications" element={<CourtOwnerNotifications />} />
+        <Route path="/courtowner/survey/:surveyId" element={<CourtOwnerSurvey />} />
         <Route path="/courtowner/subscription" element={<CourtOwnerSubscription />} />
         <Route path="/courtowner/subscribe-payment/:planId" element={<CourtOwnerSubscribePayment />} />
         <Route path="/courtowner/subscription-success" element={<CourtOwnerSubscriptionSuccess />} />
@@ -211,6 +224,7 @@ function App() {
         <Route path="/sponsor/edit-profile" element={<SponsorEditProfile />} />
         <Route path="/sponsor/settings" element={<SponsorSettings />} />
         <Route path="/sponsor/notifications" element={<SponsorNotifications />} />
+        <Route path="/sponsor/survey/:surveyId" element={<SponsorSurvey />} />
         <Route path="/sponsor/subscription" element={<SponsorSubscription />} />
         <Route path="/sponsor/subscribe-payment/:planId" element={<SponsorSubscribePayment />} />
         <Route path="/sponsor/subscription-success" element={<SponsorSubscriptionSuccess />} />
