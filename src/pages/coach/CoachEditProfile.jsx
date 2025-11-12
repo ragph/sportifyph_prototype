@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoPerson, IoMail, IoCall, IoLocationSharp, IoFitness, IoCamera, IoSave, IoCash, IoText, IoBriefcase } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const CoachEditProfile = () => {
   const navigate = useNavigate()
@@ -103,8 +104,7 @@ const CoachEditProfile = () => {
       <div className="max-w-lg mx-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Profile Picture */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Profile Picture</h3>
+          <Card title="Profile Picture" padding="p-6">
             <div className="flex flex-col items-center">
               <div className="relative mb-4">
                 <div className="w-32 h-32 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center overflow-hidden">
@@ -132,11 +132,10 @@ const CoachEditProfile = () => {
                 Click the camera icon to upload a new photo
               </p>
             </div>
-          </div>
+          </Card>
 
           {/* Personal Information */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Personal Information</h3>
+          <Card title="Personal Information" padding="p-6">
             <div className="space-y-4">
               {/* Full Name */}
               <div>
@@ -233,11 +232,10 @@ const CoachEditProfile = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Professional Information */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Professional Information</h3>
+          <Card title="Professional Information" padding="p-6">
             <div className="space-y-4">
               {/* Specialization */}
               <div>
@@ -333,11 +331,10 @@ const CoachEditProfile = () => {
                 )}
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Bio */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">About</h3>
+          <Card title="About" padding="p-6">
             <div>
               <label className="block text-sm font-medium text-dark-text mb-2">
                 Bio
@@ -366,10 +363,10 @@ const CoachEditProfile = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Save Button */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4">
+          <Card padding="p-4">
             <button
               type="submit"
               disabled={isLoading}
@@ -386,7 +383,7 @@ const CoachEditProfile = () => {
                 </>
               )}
             </button>
-          </div>
+          </Card>
         </form>
       </div>
     </div>

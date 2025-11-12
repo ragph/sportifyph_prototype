@@ -10,6 +10,7 @@ import {
   IoCash
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const CoachSubscribePayment = () => {
   const navigate = useNavigate()
@@ -140,9 +141,7 @@ const CoachSubscribePayment = () => {
           </div>
 
           {/* Payment Method */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Payment Method</h3>
-
+          <Card title="Payment Method" padding="p-6">
             <div className="grid grid-cols-2 gap-3 mb-6">
               <button
                 type="button"
@@ -276,12 +275,10 @@ const CoachSubscribePayment = () => {
                 </div>
               </div>
             )}
-          </div>
+          </Card>
 
           {/* Billing Details */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Billing Summary</h3>
-
+          <Card title="Billing Summary" padding="p-6">
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-dark-text-secondary">Subscription</span>
@@ -324,7 +321,7 @@ const CoachSubscribePayment = () => {
                 </div>
               </label>
             </div>
-          </div>
+          </Card>
 
           {/* Security Badge */}
           <div className="bg-brand-primary/10 border border-green-200 rounded-xl p-4 flex items-center space-x-3">
@@ -336,7 +333,7 @@ const CoachSubscribePayment = () => {
           </div>
 
           {/* Terms Agreement */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
+          <Card padding="p-6">
             <label className="flex items-start space-x-3 cursor-pointer">
               <input
                 type="checkbox"
@@ -360,7 +357,7 @@ const CoachSubscribePayment = () => {
             {errors.agreeToTerms && (
               <p className="mt-2 text-sm text-red-500">{errors.agreeToTerms}</p>
             )}
-          </div>
+          </Card>
 
           {/* Important Info */}
           <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex items-start space-x-3">

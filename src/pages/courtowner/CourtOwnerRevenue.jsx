@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { IoCash, IoTrendingUp, IoCalendar, IoStorefront } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const CourtOwnerRevenue = () => {
   const chartData = [
@@ -45,21 +46,20 @@ const CourtOwnerRevenue = () => {
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <div key={index} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+              <Card key={index} padding="p-4">
                 <IconComponent className={`text-2xl text-${stat.color}-600 mb-2`} />
                 <div className="text-xl font-bold text-dark-text">{stat.value}</div>
                 <div className="text-xs text-dark-text-secondary">{stat.label}</div>
                 {stat.change && (
                   <div className="text-xs text-brand-primary font-semibold mt-1">{stat.change}</div>
                 )}
-              </div>
+              </Card>
             )
           })}
         </div>
 
         {/* Revenue Chart */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Revenue Trend (6 Months)</h2>
+        <Card title="Revenue Trend (6 Months)" padding="p-4">
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -69,11 +69,10 @@ const CourtOwnerRevenue = () => {
               <Line type="monotone" dataKey="revenue" stroke="#dc2626" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
-        </div>
+        </Card>
 
         {/* Court Revenue Breakdown */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Revenue by Court</h2>
+        <Card title="Revenue by Court" padding="p-4">
           <div className="space-y-3">
             {courtRevenue.map((court, index) => (
               <div key={index} className="space-y-2">
@@ -91,10 +90,10 @@ const CourtOwnerRevenue = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Recent Transactions */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+        <Card padding="p-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-dark-text">Recent Transactions</h2>
             <button className="text-sm text-brand-primary font-semibold hover:underline">View All</button>
@@ -118,7 +117,7 @@ const CourtOwnerRevenue = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

@@ -10,6 +10,8 @@ import {
   IoMail,
   IoCall
 } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const OrganizerParticipants = () => {
   const [filter, setFilter] = useState('all')
@@ -107,24 +109,24 @@ const OrganizerParticipants = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-3 gap-3">
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border text-center">
+        <Card padding="p-4" className="text-center">
           <div className="text-2xl font-bold text-brand-primary">
             {participants.filter(p => p.status === 'confirmed').length}
           </div>
           <div className="text-xs text-dark-text-secondary mt-1">Confirmed</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border text-center">
+        </Card>
+        <Card padding="p-4" className="text-center">
           <div className="text-2xl font-bold text-yellow-600">
             {participants.filter(p => p.status === 'pending').length}
           </div>
           <div className="text-xs text-dark-text-secondary mt-1">Pending</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border text-center">
+        </Card>
+        <Card padding="p-4" className="text-center">
           <div className="text-2xl font-bold text-brand-primary">
             {participants.reduce((sum, p) => sum + p.members, 0)}
           </div>
           <div className="text-xs text-dark-text-secondary mt-1">Total Players</div>
-        </div>
+        </Card>
       </div>
 
       {/* Search Bar */}
@@ -159,23 +161,27 @@ const OrganizerParticipants = () => {
       {/* Participants List */}
       <div className="space-y-3">
         {filteredParticipants.length === 0 ? (
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 text-center">
+          <Card padding="p-8" className="text-center">
             <IoPeople className="text-5xl text-gray-300 mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-dark-text mb-1">No participants found</h3>
             <p className="text-sm text-dark-text-secondary">Try adjusting your filters or search query</p>
-          </div>
+          </Card>
         ) : (
           filteredParticipants.map((participant) => (
-            <div key={participant.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+            <Card key={participant.id} padding="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${participant.statusColor}`}>
+                    <StatusBadge
+                      variant={participant.status === 'confirmed' ? 'success' : 'warning'}
+                      size="md"
+                      rounded="default"
+                    >
                       {participant.status.charAt(0).toUpperCase() + participant.status.slice(1)}
-                    </span>
-                    <span className="px-2 py-1 bg-dark-bg-secondary text-dark-text rounded text-xs font-medium">
+                    </StatusBadge>
+                    <StatusBadge variant="default" size="md" rounded="default">
                       {participant.members} members
-                    </span>
+                    </StatusBadge>
                   </div>
                   <h3 className="font-semibold text-dark-text text-lg">{participant.teamName}</h3>
                   <p className="text-sm text-dark-text-secondary mt-1">Captain: {participant.captain}</p>
@@ -216,7 +222,7 @@ const OrganizerParticipants = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </Card>
           ))
         )}
         </div>

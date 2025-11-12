@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { IoAddCircle, IoBriefcase, IoCash, IoPeople, IoEllipsisVertical, IoCreate, IoTrash, IoCheckmarkCircle, IoTime, IoPause } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const SponsorCampaigns = () => {
   const [filter, setFilter] = useState('all')
@@ -159,7 +161,7 @@ const SponsorCampaigns = () => {
           {filteredCampaigns.map((campaign) => {
             const progress = campaign.budget > 0 ? (campaign.spent / campaign.budget) * 100 : 0
             return (
-              <div key={campaign.id} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+              <Card key={campaign.id} padding="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white text-xl">
@@ -168,21 +170,22 @@ const SponsorCampaigns = () => {
                     <div>
                       <h3 className="font-bold text-dark-text text-sm">{campaign.name}</h3>
                       <p className="text-xs text-dark-text-secondary">{campaign.type}</p>
-                      <span className={`inline-flex items-center space-x-1 text-xs px-2 py-1 rounded-full mt-1 ${
-                        campaign.status === 'active'
-                          ? 'bg-green-100 text-green-700'
-                          : campaign.status === 'paused'
-                          ? 'bg-yellow-100 text-yellow-700'
-                          : campaign.status === 'completed'
-                          ? 'bg-blue-100 text-blue-700'
-                          : 'bg-dark-bg-secondary text-dark-text'
-                      }`}>
+                      <StatusBadge
+                        variant={
+                          campaign.status === 'active' ? 'success' :
+                          campaign.status === 'paused' ? 'warning' :
+                          campaign.status === 'completed' ? 'info' : 'default'
+                        }
+                        size="md"
+                        rounded="full"
+                        className="inline-flex items-center space-x-1 mt-1"
+                      >
                         {campaign.status === 'active' && <IoCheckmarkCircle />}
                         {campaign.status === 'paused' && <IoPause />}
                         {campaign.status === 'completed' && <IoCheckmarkCircle />}
                         {campaign.status === 'draft' && <IoTime />}
                         <span className="capitalize">{campaign.status}</span>
-                      </span>
+                      </StatusBadge>
                     </div>
                   </div>
                   <button className="p-2 hover:bg-dark-bg-secondary rounded-lg transition-colors">
@@ -239,7 +242,7 @@ const SponsorCampaigns = () => {
                     <span>View Details</span>
                   </button>
                 </div>
-              </div>
+              </Card>
             )
           })}
         </div>

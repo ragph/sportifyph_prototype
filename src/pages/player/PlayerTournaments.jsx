@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoTennisball, IoCalendar, IoLocation, IoPeople, IoSearch, IoTime, IoCheckmarkCircle, IoAlertCircle, IoTrophy, IoInformationCircle } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerTournaments = () => {
   const navigate = useNavigate()
@@ -124,20 +126,17 @@ const PlayerTournaments = () => {
               <span className="text-xs font-semibold text-dark-text-muted">{tournament.sport}</span>
             </div>
             {type === 'upcoming' && (
-              <span className={`px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${
-                tournament.status === 'Registered'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-yellow-400 text-slate-950'
-              }`}>
-                {tournament.status === 'Registered' ? <IoCheckmarkCircle className="inline mr-1" /> : <IoAlertCircle className="inline mr-1" />}
+              <StatusBadge
+                variant={tournament.status === 'Registered' ? 'info' : 'warning'}
+                icon={tournament.status === 'Registered' ? <IoCheckmarkCircle /> : <IoAlertCircle />}
+              >
                 {tournament.status}
-              </span>
+              </StatusBadge>
             )}
             {type === 'ongoing' && (
-              <span className="px-2 py-1 rounded text-xs font-medium bg-green-500 text-white flex items-center gap-1 whitespace-nowrap">
-                <IoTime />
+              <StatusBadge variant="success" icon={<IoTime />}>
                 {tournament.status}
-              </span>
+              </StatusBadge>
             )}
           </div>
 
@@ -230,7 +229,7 @@ const PlayerTournaments = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-2">
+      <Card padding="p-2">
         <div className="grid grid-cols-4 gap-1">
           {tabs.map((tab) => (
             <button
@@ -247,7 +246,7 @@ const PlayerTournaments = () => {
             </button>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Tournament List */}
       <div className="space-y-3">
@@ -258,7 +257,7 @@ const PlayerTournaments = () => {
 
         {/* Empty State */}
         {tournaments[activeTab].length === 0 && (
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-12 text-center">
+          <Card padding="p-12" className="text-center">
             <div className="flex justify-center mb-4">
               <div className="w-20 h-20 bg-dark-bg-secondary rounded-full flex items-center justify-center">
                 <IoTrophy className="text-5xl text-dark-text-muted" />
@@ -270,7 +269,7 @@ const PlayerTournaments = () => {
                 ? 'No tournaments available right now'
                 : `You don't have any ${activeTab} tournaments`}
             </p>
-          </div>
+          </Card>
         )}
       </div>
     </div>

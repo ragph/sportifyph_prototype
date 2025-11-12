@@ -8,6 +8,7 @@ import {
   IoCheckmarkCircle,
   IoTime
 } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const ClubGMFinances = () => {
   const summary = {
@@ -123,8 +124,7 @@ const ClubGMFinances = () => {
       </div>
 
       {/* Revenue Chart */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6 border border-dark-border">
-        <h3 className="font-bold text-dark-text mb-4">Revenue Trend (Last 6 Months)</h3>
+      <Card title="Revenue Trend (Last 6 Months)" padding="p-6">
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -147,11 +147,10 @@ const ClubGMFinances = () => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      </Card>
 
       {/* Membership Revenue Breakdown */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6 border border-dark-border">
-        <h3 className="font-bold text-dark-text mb-4">Membership Revenue</h3>
+      <Card title="Membership Revenue" padding="p-6">
         <div className="space-y-4">
           {membershipRevenue.map((item, index) => (
             <div key={index}>
@@ -176,11 +175,10 @@ const ClubGMFinances = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Recent Transactions */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6 border border-dark-border">
-        <h3 className="font-bold text-dark-text mb-4">Recent Transactions</h3>
+      <Card title="Recent Transactions" padding="p-6">
         <div className="space-y-3">
           {recentTransactions.map((transaction) => (
             <div
@@ -209,7 +207,7 @@ const ClubGMFinances = () => {
             </div>
           ))}
         </div>
-        </div>
+      </Card>
       </div>
     </div>
   )

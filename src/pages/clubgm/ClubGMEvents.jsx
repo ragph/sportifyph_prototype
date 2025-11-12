@@ -9,6 +9,7 @@ import {
   IoLocationSharp,
   IoCheckmarkCircle
 } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const ClubGMEvents = () => {
   const navigate = useNavigate()
@@ -139,7 +140,7 @@ const ClubGMEvents = () => {
       {/* Events List */}
       <div className="space-y-3">
         {filteredEvents.map((event) => (
-          <div key={event.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+          <Card key={event.id} padding="p-4">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-2">
@@ -188,14 +189,14 @@ const ClubGMEvents = () => {
                 ></div>
               </div>
             </div>
-          </div>
+          </Card>
         ))}
 
         {filteredEvents.length === 0 && (
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 text-center">
+          <Card padding="p-8" className="text-center">
             <IoCalendar className="text-5xl text-gray-300 mx-auto mb-3" />
             <p className="text-dark-text-muted">No events found</p>
-          </div>
+          </Card>
         )}
         </div>
       </div>

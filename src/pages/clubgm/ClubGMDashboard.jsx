@@ -18,6 +18,8 @@ import DashboardWelcomeBanner from '../../components/DashboardWelcomeBanner'
 import SubscriptionBanner from '../../components/SubscriptionBanner'
 import QuickActions from '../../components/QuickActions'
 import SurveySection from '../../components/SurveySection'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 import { surveys } from '../../data/surveyData'
 
 const ClubGMDashboard = () => {
@@ -147,26 +149,26 @@ const ClubGMDashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        <Card padding="p-4">
           <IoPeople className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{stats.totalMembers}</div>
           <div className="text-xs text-dark-text-secondary">Total Members</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoCheckmarkCircle className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{stats.activeMembers}</div>
           <div className="text-xs text-dark-text-secondary">Active Members</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoCalendar className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{stats.upcomingEvents}</div>
           <div className="text-xs text-dark-text-secondary">Upcoming Events</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoCash className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">₱{stats.monthlyRevenue.toLocaleString()}</div>
           <div className="text-xs text-dark-text-secondary">This Month</div>
-        </div>
+        </Card>
       </div>
 
       {/* Quick Actions */}
@@ -185,16 +187,23 @@ const ClubGMDashboard = () => {
         </div>
         <div className="space-y-3">
           {upcomingEvents.map((event) => (
-            <div key={event.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+            <Card key={event.id} padding="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${event.statusColor}`}>
+                    <StatusBadge
+                      variant={
+                        event.status === 'Confirmed' ? 'success-light' :
+                        event.status === 'Upcoming' ? 'info-light' :
+                        'orange'
+                      }
+                      size="md"
+                    >
                       {event.status}
-                    </span>
-                    <span className="px-2 py-1 bg-dark-bg-secondary text-dark-text rounded text-xs font-medium">
+                    </StatusBadge>
+                    <StatusBadge variant="default" size="md">
                       {event.type}
-                    </span>
+                    </StatusBadge>
                   </div>
                   <h4 className="font-semibold text-dark-text mb-1">{event.name}</h4>
                   <div className="flex items-center text-xs text-dark-text-secondary space-x-3">
@@ -216,7 +225,7 @@ const ClubGMDashboard = () => {
                 <span className="text-xs text-dark-text-secondary">Participants</span>
                 <span className="text-sm font-bold text-brand-primary">{event.participants} registered</span>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
@@ -232,7 +241,7 @@ const ClubGMDashboard = () => {
             View All
           </button>
         </div>
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden border border-dark-border">
+        <Card noPadding className="overflow-hidden">
           {recentMembers.map((member, index) => (
             <div
               key={member.id}
@@ -252,17 +261,16 @@ const ClubGMDashboard = () => {
                 </div>
               </div>
               <div className="text-right">
-                <span className={`px-2 py-1 rounded text-xs font-medium ${
-                  member.status === 'Active'
-                    ? 'bg-brand-primary/20 text-brand-primary ring-1 ring-brand-primary/30'
-                    : 'bg-yellow-100 text-yellow-700'
-                }`}>
+                <StatusBadge
+                  variant={member.status === 'Active' ? 'success-light' : 'warning'}
+                  size="md"
+                >
                   {member.status}
-                </span>
+                </StatusBadge>
               </div>
             </div>
           ))}
-        </div>
+        </Card>
       </div>
 
       {/* Monthly Overview */}

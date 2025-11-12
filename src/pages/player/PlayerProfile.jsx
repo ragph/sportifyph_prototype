@@ -15,6 +15,8 @@ import {
   IoTennisball,
   IoAmericanFootball
 } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerProfile = () => {
   const navigate = useNavigate()
@@ -61,7 +63,7 @@ const PlayerProfile = () => {
     <div className="min-h-screen bg-dark-bg pb-20">
       <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Profile Header */}
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden">
+        <Card noPadding className="overflow-hidden">
           <div className="h-24 bg-gradient-to-r from-brand-primary to-blue-700"></div>
           <div className="relative px-4 pb-4">
             <img
@@ -97,43 +99,41 @@ const PlayerProfile = () => {
               </button>
             </div>
           </div>
-        </div>
+        </Card>
 
         {/* About */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-3">About</h2>
+        <Card title="About" padding="p-4">
           <p className="text-sm text-dark-text-secondary">{profile.bio}</p>
-        </div>
+        </Card>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <div key={index} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+              <Card key={index} padding="p-4">
                 <IconComponent className={`text-2xl text-${stat.color}-500 mb-2`} />
                 <div className="text-2xl font-bold text-dark-text">{stat.value}</div>
                 <div className="text-xs text-dark-text-secondary">{stat.label}</div>
-              </div>
+              </Card>
             )
           })}
         </div>
 
         {/* Sports & Skill Levels */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Sports & Skill Levels</h2>
+        <Card title="Sports & Skill Levels" padding="p-4">
           <div className="space-y-3">
             {sports.map((sport, index) => {
-              // Define skill level colors
-              const skillLevelColors = {
-                'Beginner': 'bg-green-500 text-white',
-                'Intermediate': 'bg-blue-500 text-white',
-                'Advanced': 'bg-purple-600 text-white',
-                'Expert': 'bg-orange-500 text-white',
-                'Professional': 'bg-red-600 text-white'
+              // Define skill level variants
+              const skillLevelVariants = {
+                'Beginner': 'success',
+                'Intermediate': 'info',
+                'Advanced': 'purple',
+                'Expert': 'orange',
+                'Professional': 'error'
               }
 
-              const levelColor = skillLevelColors[sport.level] || 'bg-gray-500 text-white'
+              const levelVariant = skillLevelVariants[sport.level] || 'default'
               const SportIcon = sport.icon
 
               return (
@@ -142,18 +142,17 @@ const PlayerProfile = () => {
                     <SportIcon className="text-xl text-brand-primary" />
                     <span className="text-sm font-medium text-dark-text">{sport.name}</span>
                   </div>
-                  <span className={`px-3 py-1.5 rounded-full text-xs font-bold ${levelColor} shadow-sm whitespace-nowrap`}>
+                  <StatusBadge variant={levelVariant} size="lg" rounded="full" className="font-bold">
                     {sport.level}
-                  </span>
+                  </StatusBadge>
                 </div>
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* Achievements */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Top Achievements</h2>
+        <Card title="Top Achievements" padding="p-4">
           <div className="grid grid-cols-1 gap-2">
             {achievements.map((achievement, index) => (
               <div key={index} className="flex items-center space-x-2 p-2 bg-brand-primary/10 rounded-lg">
@@ -162,11 +161,10 @@ const PlayerProfile = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Contact Information */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Contact Information</h2>
+        <Card title="Contact Information" padding="p-4">
           <div className="space-y-3">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon
@@ -181,7 +179,7 @@ const PlayerProfile = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* Member Since */}
         <div className="text-center py-4">

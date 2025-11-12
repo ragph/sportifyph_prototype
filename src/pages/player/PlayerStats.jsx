@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { IoBasketball, IoHandRight, IoArrowUp, IoEye, IoShield, IoFlash, IoDownload } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerStats = () => {
   const [selectedSport, setSelectedSport] = useState('Pickleball')
@@ -199,8 +201,7 @@ const PlayerStats = () => {
       </div>
 
       {/* Performance Stats */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-5 border border-dark-border">
-        <h3 className="text-lg font-bold text-dark-text mb-4">Performance Breakdown</h3>
+      <Card title="Performance Breakdown">
         <div className="grid grid-cols-2 gap-3">
           {currentStats.performance.map((stat, index) => {
             const IconComponent = stat.icon
@@ -220,11 +221,10 @@ const PlayerStats = () => {
             )
           })}
         </div>
-      </div>
+      </Card>
 
       {/* Performance Chart */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-5 border border-dark-border">
-        <h3 className="text-lg font-bold text-dark-text mb-4">Performance Trend</h3>
+      <Card title="Performance Trend">
         <ResponsiveContainer width="100%" height={220}>
           <LineChart data={currentStats.chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" opacity={0.3} />
@@ -258,11 +258,10 @@ const PlayerStats = () => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      </Card>
 
       {/* Recent Games */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-5 border border-dark-border">
-        <h3 className="text-lg font-bold text-dark-text mb-4">Recent Games</h3>
+      <Card title="Recent Games">
         <div className="space-y-3">
           {currentStats.recentGames.map((game, index) => (
             <div
@@ -271,15 +270,14 @@ const PlayerStats = () => {
             >
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-2">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
-                      game.result === 'Win'
-                        ? 'bg-green-500 text-white'
-                        : 'bg-red-500 text-white'
-                    }`}
+                  <StatusBadge
+                    variant={game.result === 'Win' ? 'success' : 'error'}
+                    size="lg"
+                    rounded="full"
+                    className="font-bold"
                   >
                     {game.result}
-                  </span>
+                  </StatusBadge>
                   <span className="text-xs font-medium text-dark-text-muted">{game.date}</span>
                 </div>
                 <p className="font-bold text-dark-text text-sm mb-1">{game.opponent}</p>
@@ -295,7 +293,7 @@ const PlayerStats = () => {
           <button className="w-full mt-4 py-3 bg-brand-primary/10 hover:bg-brand-primary/20 text-brand-primary border border-brand-primary/30 hover:border-brand-primary/50 rounded-lg font-bold text-sm transition-all">
             View All Games
           </button>
-        </div>
+        </Card>
       </div>
     </div>
   )

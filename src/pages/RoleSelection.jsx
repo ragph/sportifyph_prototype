@@ -77,7 +77,7 @@ const RoleSelection = () => {
             <img
               src="/images/SPORTIFY-PH-LOGO.png"
               alt="Sportify PH Logo"
-              className="h-20 w-auto object-contain"
+              className="h-20 w-auto object-contain mr-1"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ const RoleSelection = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-brand-primary border-t border-dark-border py-8">
+      <div className="bg-dark-bg-tertiary border-t border-dark-border py-8">
         <div className="max-w-lg mx-auto px-4">
           <p className="text-center text-white text-xs mb-0">
             © 2024 Sportify PH. All rights reserved.

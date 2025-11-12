@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { IoAddCircle, IoStorefront, IoTime, IoCash, IoEllipsisVertical, IoCreate, IoTrash, IoCheckmarkCircle, IoCloseCircle } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const CourtOwnerCourts = () => {
   const [filter, setFilter] = useState('all')
@@ -102,7 +104,7 @@ const CourtOwnerCourts = () => {
         {/* Courts List */}
         <div className="space-y-4">
           {filteredCourts.map((court) => (
-            <div key={court.id} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+            <Card key={court.id} padding="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center space-x-3">
                   <div className="w-16 h-16 bg-gradient-to-r from-red-600 to-orange-600 rounded-lg flex items-center justify-center text-3xl">
@@ -111,18 +113,20 @@ const CourtOwnerCourts = () => {
                   <div>
                     <h3 className="font-bold text-dark-text">{court.name}</h3>
                     <p className="text-sm text-dark-text-secondary">{court.type}</p>
-                    <span className={`inline-flex items-center space-x-1 text-xs px-2 py-1 rounded-full mt-1 ${
-                      court.status === 'available'
-                        ? 'bg-green-100 text-green-700'
-                        : court.status === 'occupied'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'bg-orange-100 text-orange-700'
-                    }`}>
+                    <StatusBadge
+                      variant={
+                        court.status === 'available' ? 'success' :
+                        court.status === 'occupied' ? 'info' : 'orange'
+                      }
+                      size="md"
+                      rounded="full"
+                      className="inline-flex items-center space-x-1 mt-1"
+                    >
                       {court.status === 'available' && <IoCheckmarkCircle />}
                       {court.status === 'occupied' && <IoTime />}
                       {court.status === 'maintenance' && <IoCloseCircle />}
                       <span className="capitalize">{court.status}</span>
-                    </span>
+                    </StatusBadge>
                   </div>
                 </div>
                 <button className="p-2 hover:bg-dark-bg-secondary rounded-lg transition-colors">
@@ -157,7 +161,7 @@ const CourtOwnerCourts = () => {
                   <span>View Details</span>
                 </button>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

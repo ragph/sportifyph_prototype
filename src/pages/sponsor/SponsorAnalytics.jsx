@@ -1,5 +1,6 @@
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { IoCash, IoPeople, IoEye, IoTrendingUp, IoBriefcase, IoStatsChart } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const SponsorAnalytics = () => {
   const reachData = [
@@ -55,7 +56,7 @@ const SponsorAnalytics = () => {
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <div key={index} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+              <Card key={index} padding="p-4">
                 <IconComponent className={`text-2xl text-${stat.color}-600 mb-2`} />
                 <div className="text-xl font-bold text-dark-text">{stat.value}</div>
                 <div className="text-xs text-dark-text-secondary">{stat.label}</div>
@@ -65,14 +66,13 @@ const SponsorAnalytics = () => {
                     {stat.change}
                   </div>
                 )}
-              </div>
+              </Card>
             )
           })}
         </div>
 
         {/* Reach Trend Chart */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Reach Trend (6 Months)</h2>
+        <Card title="Reach Trend (6 Months)" padding="p-4">
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={reachData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -82,11 +82,10 @@ const SponsorAnalytics = () => {
               <Line type="monotone" dataKey="reach" stroke="#4f46e5" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
-        </div>
+        </Card>
 
         {/* Spend Analysis Chart */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Monthly Spend Analysis</h2>
+        <Card title="Monthly Spend Analysis" padding="p-4">
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={spendData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -96,11 +95,10 @@ const SponsorAnalytics = () => {
               <Bar dataKey="spend" fill="#4f46e5" />
             </BarChart>
           </ResponsiveContainer>
-        </div>
+        </Card>
 
         {/* Campaign Performance */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Campaign Performance</h2>
+        <Card title="Campaign Performance" padding="p-4">
           <div className="space-y-3">
             {campaignPerformance.map((campaign, index) => (
               <div key={index} className="p-3 bg-dark-bg rounded-lg">
@@ -129,11 +127,10 @@ const SponsorAnalytics = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Top Athletes */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Top Performing Athletes</h2>
+        <Card title="Top Performing Athletes" padding="p-4">
           <div className="space-y-3">
             {topAthletes.map((athlete, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-dark-bg rounded-lg">
@@ -155,7 +152,7 @@ const SponsorAnalytics = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

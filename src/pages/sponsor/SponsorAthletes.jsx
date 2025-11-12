@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { IoSearch, IoPerson, IoFootball, IoTrophy, IoStar, IoLocationSharp, IoMail, IoPeople } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const SponsorAthletes = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -206,7 +208,7 @@ const SponsorAthletes = () => {
         {/* Athletes List */}
         <div className="space-y-4">
           {filteredAthletes.map((athlete) => (
-            <div key={athlete.id} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+            <Card key={athlete.id} padding="p-4">
               <div className="flex items-start space-x-3 mb-3">
                 <div className="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-3xl flex-shrink-0">
                   {athlete.image}
@@ -231,14 +233,14 @@ const SponsorAthletes = () => {
                         </div>
                       </div>
                     </div>
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      athlete.type === 'player'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'bg-purple-100 text-purple-700'
-                    }`}>
+                    <StatusBadge
+                      variant={athlete.type === 'player' ? 'info' : 'purple'}
+                      size="md"
+                      rounded="full"
+                    >
                       {athlete.type === 'player' ? <IoPerson className="inline mr-1" /> : <IoPeople className="inline mr-1" />}
                       {athlete.type === 'player' ? 'Player' : 'Team'}
-                    </span>
+                    </StatusBadge>
                   </div>
                 </div>
               </div>
@@ -277,7 +279,7 @@ const SponsorAthletes = () => {
                   <span>View Profile</span>
                 </button>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 

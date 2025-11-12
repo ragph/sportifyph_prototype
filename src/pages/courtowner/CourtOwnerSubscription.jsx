@@ -11,6 +11,7 @@ import {
   IoClose
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const CourtOwnerSubscription = () => {
   const navigate = useNavigate()
@@ -120,7 +121,7 @@ const CourtOwnerSubscription = () => {
         )}
 
         {/* Plan Toggle */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-1 shadow-sm flex">
+        <Card padding="p-1" className="flex">
           <button
             onClick={() => setSelectedPlan('monthly')}
             className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
@@ -144,7 +145,7 @@ const CourtOwnerSubscription = () => {
               Save 17%
             </span>
           </button>
-        </div>
+        </Card>
 
         {/* Plans */}
         <div className="space-y-4">
@@ -198,8 +199,7 @@ const CourtOwnerSubscription = () => {
         </div>
 
         {/* Benefits */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-dark-text mb-4">Why Subscribe?</h3>
+        <Card title="Why Subscribe?" padding="p-6">
           <div className="space-y-4">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon
@@ -216,11 +216,10 @@ const CourtOwnerSubscription = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* FAQ */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-dark-text mb-4">Frequently Asked Questions</h3>
+        <Card title="Frequently Asked Questions" padding="p-6">
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-dark-text mb-1">Can I cancel anytime?</h4>
@@ -235,7 +234,7 @@ const CourtOwnerSubscription = () => {
               <p className="text-sm text-dark-text-secondary">Yes, you can change your plan at any time. Adjustments will be prorated.</p>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

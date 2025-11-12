@@ -15,6 +15,7 @@ import {
   IoTrendingUp
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const CoachNotifications = () => {
   const navigate = useNavigate()
@@ -208,11 +209,11 @@ const CoachNotifications = () => {
 
         {/* Notifications List */}
         {filteredNotifications.length === 0 ? (
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 text-center">
+          <Card padding="p-8" className="text-center">
             <IoCheckmarkCircle className="text-5xl text-gray-300 mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-dark-text mb-1">No notifications</h3>
             <p className="text-sm text-dark-text-secondary">You're all caught up!</p>
-          </div>
+          </Card>
         ) : (
           <div className="space-y-3">
             {filteredNotifications.map((notification) => {

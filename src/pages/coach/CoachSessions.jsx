@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoCalendar, IoTime, IoPeople, IoCash, IoCheckmarkCircle, IoClose, IoAdd, IoFilter } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const CoachSessions = () => {
   const navigate = useNavigate()
@@ -107,22 +109,26 @@ const CoachSessions = () => {
       {/* Sessions List */}
       <div className="space-y-3">
         {filteredSessions.map((session) => (
-          <div key={session.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+          <Card key={session.id} padding="p-4">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
                 <div className="flex items-center space-x-2 mb-2">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    session.status === 'upcoming'
-                      ? 'bg-brand-primary text-white'
-                      : session.status === 'completed'
-                      ? 'bg-green-500 text-white'
-                      : 'bg-yellow-400 text-slate-950'
-                  }`}>
+                  <StatusBadge
+                    variant={
+                      session.status === 'upcoming'
+                        ? 'primary'
+                        : session.status === 'completed'
+                        ? 'success'
+                        : 'warning'
+                    }
+                    size="md"
+                    rounded="default"
+                  >
                     {session.status.charAt(0).toUpperCase() + session.status.slice(1)}
-                  </span>
-                  <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-medium">
+                  </StatusBadge>
+                  <StatusBadge variant="purple" size="md" rounded="default">
                     {session.type}
-                  </span>
+                  </StatusBadge>
                   {session.paid && (
                     <IoCheckmarkCircle className="text-brand-primary" />
                   )}
@@ -147,7 +153,7 @@ const CoachSessions = () => {
                 <span>{session.duration}</span>
               </div>
             </div>
-          </div>
+          </Card>
         ))}
         </div>
       </div>

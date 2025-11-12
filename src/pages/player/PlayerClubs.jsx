@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { IoBasketball, IoFlash, IoFlame, IoPeople, IoLocation, IoCalendar, IoCash, IoSearch, IoAdd, IoSettings, IoChatbubbles, IoInformationCircle, IoBriefcase } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerClubs = () => {
   const [activeTab, setActiveTab] = useState('myClubs')
@@ -73,7 +75,7 @@ const PlayerClubs = () => {
   const renderMyClubCard = (club) => {
     const IconComponent = club.icon
     return (
-      <div key={club.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden border border-dark-border">
+      <Card key={club.id} noPadding className="overflow-hidden">
         <div className={`p-4 text-white`}>
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-4">
@@ -87,9 +89,9 @@ const PlayerClubs = () => {
                 <p className="text-xs opacity-90">{club.sport}</p>
               </div>
             </div>
-            <span className="px-3 py-1.5 bg-white text-gray-900 rounded-full text-xs font-bold whitespace-nowrap">
+            <StatusBadge variant="white" size="lg" rounded="full" className="font-bold">
               {club.role}
-            </span>
+            </StatusBadge>
           </div>
         </div>
 
@@ -117,7 +119,7 @@ const PlayerClubs = () => {
             {club.role === 'GM' || club.role === 'Co-GM' ? (
               <>
                 <button className="flex-1 bg-brand-primary hover:bg-brand-primary-light text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1">
-                  
+
                   Visit Club
                 </button>
                 <button className="flex-1 bg-brand-primary hover:bg-brand-primary-light text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1">
@@ -136,14 +138,14 @@ const PlayerClubs = () => {
             )}
           </div>
         </div>
-      </div>
+      </Card>
     )
   }
 
   const renderDiscoverCard = (club) => {
     const IconComponent = club.icon
     return (
-      <div key={club.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+      <Card key={club.id} padding="p-4">
         <div className="flex items-start space-x-4">
           <img
             src={club.logo}
@@ -154,10 +156,9 @@ const PlayerClubs = () => {
             {/* Header with slots badge */}
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold text-dark-text-muted">{club.sport}</span>
-              <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium flex items-center gap-1 whitespace-nowrap">
-                <IoPeople />
+              <StatusBadge variant="success-light" icon={<IoPeople />}>
                 {club.openSlots} slots
-              </span>
+              </StatusBadge>
             </div>
 
             {/* Club name */}
@@ -193,7 +194,7 @@ const PlayerClubs = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     )
   }
 
@@ -210,7 +211,7 @@ const PlayerClubs = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-2 flex space-x-2">
+      <Card padding="p-2" className="flex space-x-2">
         <button
           onClick={() => setActiveTab('myClubs')}
           className={`flex-1 py-2 rounded-lg font-medium text-sm transition-colors ${
@@ -231,7 +232,7 @@ const PlayerClubs = () => {
         >
           Discover
         </button>
-      </div>
+      </Card>
 
       {/* Content */}
       {activeTab === 'myClubs' ? (

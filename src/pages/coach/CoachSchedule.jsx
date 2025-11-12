@@ -11,6 +11,8 @@ import {
   IoChevronForward,
   IoLocationOutline
 } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const CoachSchedule = () => {
   const navigate = useNavigate()
@@ -166,7 +168,7 @@ const CoachSchedule = () => {
         </div>
 
         {/* Calendar */}
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm border border-dark-border p-4">
+        <Card padding="p-4">
           {/* Month Navigation */}
           <div className="flex items-center justify-between mb-4">
             <button
@@ -228,7 +230,7 @@ const CoachSchedule = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* Selected Date Sessions */}
         <div>
@@ -246,9 +248,10 @@ const CoachSchedule = () => {
           {selectedDateEvents.length > 0 ? (
             <div className="space-y-3">
               {selectedDateEvents.map((session) => (
-                <div
+                <Card
                   key={session.id}
-                  className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border hover:shadow-md transition-shadow"
+                  padding="p-4"
+                  className="hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-start space-x-3 flex-1">
@@ -259,20 +262,16 @@ const CoachSchedule = () => {
                       />
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-1">
-                          <span className={`px-2 py-1 rounded text-xs font-medium ${
-                            session.status === 'confirmed'
-                              ? 'bg-green-100 text-green-700'
-                              : 'bg-yellow-100 text-yellow-700'
-                          }`}>
-                            {session.status === 'confirmed' ? (
-                              <><IoCheckmarkCircle className="inline mr-1" />Confirmed</>
-                            ) : (
-                              'Pending'
-                            )}
-                          </span>
-                          <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-medium">
+                          <StatusBadge
+                            variant={session.status === 'confirmed' ? 'success-light' : 'warning'}
+                            size="md"
+                            icon={session.status === 'confirmed' ? <IoCheckmarkCircle /> : null}
+                          >
+                            {session.status === 'confirmed' ? 'Confirmed' : 'Pending'}
+                          </StatusBadge>
+                          <StatusBadge variant="purple" size="md">
                             {session.type}
-                          </span>
+                          </StatusBadge>
                         </div>
                         <h3 className="font-semibold text-dark-text">{session.student}</h3>
                       </div>
@@ -292,11 +291,11 @@ const CoachSchedule = () => {
                       <span>{session.location}</span>
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           ) : (
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 border border-dark-border text-center">
+            <Card padding="p-8" className="text-center">
               <IoCalendar className="text-5xl text-gray-300 mx-auto mb-3" />
               <p className="text-dark-text-muted mb-4">No sessions scheduled for this date</p>
               <button
@@ -306,7 +305,7 @@ const CoachSchedule = () => {
                 <IoAdd className="text-xl" />
                 <span>Schedule a Session</span>
               </button>
-            </div>
+            </Card>
           )}
         </div>
 

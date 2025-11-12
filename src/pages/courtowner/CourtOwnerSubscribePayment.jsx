@@ -10,6 +10,7 @@ import {
   IoCash
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const CourtOwnerSubscribePayment = () => {
   const navigate = useNavigate()
@@ -139,8 +140,7 @@ const CourtOwnerSubscribePayment = () => {
         </div>
 
         {/* Payment Method */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="font-bold text-dark-text mb-4">Payment Method</h3>
+        <Card title="Payment Method" padding="p-6">
 
           <div className="space-y-3 mb-6">
             <label className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-colors ${
@@ -283,11 +283,10 @@ const CourtOwnerSubscribePayment = () => {
               </div>
             </div>
           )}
-        </div>
+        </Card>
 
         {/* Billing Information */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="font-bold text-dark-text mb-4">Billing Information</h3>
+        <Card title="Billing Information" padding="p-6">
           <div className="space-y-3 text-sm">
             <div className="flex justify-between">
               <span className="text-dark-text-secondary">Next billing date</span>
@@ -307,10 +306,10 @@ const CourtOwnerSubscribePayment = () => {
               </label>
             </div>
           </div>
-        </div>
+        </Card>
 
         {/* Terms */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
+        <Card padding="p-6">
           <label className="flex items-start space-x-3 cursor-pointer">
             <input
               type="checkbox"
@@ -326,7 +325,7 @@ const CourtOwnerSubscribePayment = () => {
           {errors.agreeToTerms && (
             <p className="text-red-500 text-xs mt-2">{errors.agreeToTerms}</p>
           )}
-        </div>
+        </Card>
 
         {/* Security Badge */}
         <div className="bg-brand-primary/10 border border-green-200 rounded-lg p-4">

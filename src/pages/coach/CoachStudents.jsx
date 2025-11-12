@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { IoPerson, IoStar, IoCalendar, IoTrendingUp, IoSearch, IoArrowForward } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const CoachStudents = () => {
   const students = [
@@ -66,7 +67,7 @@ const CoachStudents = () => {
       {/* Students List */}
       <div className="space-y-3">
         {students.map((student) => (
-          <div key={student.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+          <Card key={student.id} padding="p-4">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center space-x-3">
                 <img
@@ -102,7 +103,7 @@ const CoachStudents = () => {
               <IoCalendar className="mr-1" />
               Last session: {student.lastSession}
             </div>
-          </div>
+          </Card>
         ))}
         </div>
       </div>

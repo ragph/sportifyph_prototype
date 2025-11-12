@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerAchievements = () => {
   const achievements = {
@@ -123,22 +125,21 @@ const PlayerAchievements = () => {
     { id: 'locked', label: 'Locked', count: achievements.locked.length }
   ]
 
-  const getRarityColor = (rarity) => {
+  const getRarityVariant = (rarity) => {
     switch (rarity) {
-      case 'Legendary': return 'bg-yellow-100 text-yellow-700'
-      case 'Epic': return 'bg-purple-100 text-purple-700'
-      case 'Rare': return 'bg-blue-100 text-blue-700'
-      default: return 'bg-dark-bg-secondary text-dark-text'
+      case 'Legendary': return 'warning'
+      case 'Epic': return 'purple'
+      case 'Rare': return 'info'
+      default: return 'default'
     }
   }
 
   const renderAchievementCard = (achievement, isLocked = false) => {
     return (
-      <div
+      <Card
         key={achievement.id}
-        className={`bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border ${
-          isLocked ? 'opacity-60' : ''
-        }`}
+        padding="p-4"
+        className={isLocked ? 'opacity-60' : ''}
       >
         <div className="flex items-start space-x-4">
           <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${achievement.color} flex items-center justify-center text-3xl flex-shrink-0 ${
@@ -152,9 +153,9 @@ const PlayerAchievements = () => {
                 <h3 className="font-semibold text-dark-text">{achievement.title}</h3>
                 <p className="text-xs text-dark-text-secondary mt-1">{achievement.description}</p>
               </div>
-              <span className={`px-2 py-1 rounded text-xs font-medium ${getRarityColor(achievement.rarity)}`}>
+              <StatusBadge variant={getRarityVariant(achievement.rarity)}>
                 {achievement.rarity}
-              </span>
+              </StatusBadge>
             </div>
 
             {achievement.unlockedDate && (
@@ -179,7 +180,7 @@ const PlayerAchievements = () => {
             )}
           </div>
         </div>
-      </div>
+      </Card>
     )
   }
 
@@ -215,7 +216,7 @@ const PlayerAchievements = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-2">
+      <Card padding="p-2">
         <div className="grid grid-cols-3 gap-1">
           {tabs.map((tab) => (
             <button
@@ -232,7 +233,7 @@ const PlayerAchievements = () => {
             </button>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Achievement List */}
       <div className="space-y-3">

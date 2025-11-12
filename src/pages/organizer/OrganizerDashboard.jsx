@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   IoTrophy,
@@ -18,6 +17,8 @@ import DashboardWelcomeBanner from '../../components/DashboardWelcomeBanner'
 import SubscriptionBanner from '../../components/SubscriptionBanner'
 import QuickActions from '../../components/QuickActions'
 import SurveySection from '../../components/SurveySection'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 import { surveys } from '../../data/surveyData'
 
 const OrganizerDashboard = () => {
@@ -144,26 +145,26 @@ const OrganizerDashboard = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        <Card padding="p-4">
           <IoTrophy className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{stats.activeTournaments}</div>
           <div className="text-xs text-dark-text-secondary">Active Tournaments</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoPeople className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{stats.totalParticipants}</div>
           <div className="text-xs text-dark-text-secondary">Total Participants</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoCash className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">₱{stats.monthlyRevenue.toLocaleString()}</div>
           <div className="text-xs text-dark-text-secondary">This Month</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoCalendar className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{stats.upcomingEvents}</div>
           <div className="text-xs text-dark-text-secondary">Upcoming Events</div>
-        </div>
+        </Card>
       </div>
 
       {/* Quick Actions */}
@@ -182,16 +183,25 @@ const OrganizerDashboard = () => {
         </div>
         <div className="space-y-3">
           {activeTournaments.map((tournament) => (
-            <div key={tournament.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+            <Card key={tournament.id} padding="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${tournament.statusColor}`}>
+                    <StatusBadge
+                      variant={
+                        tournament.status === 'Registration Open' ? 'primary' :
+                        tournament.status === 'Upcoming' ? 'info' :
+                        tournament.status === 'Ongoing' ? 'purple' :
+                        'default'
+                      }
+                      size="md"
+                      rounded="default"
+                    >
                       {tournament.status}
-                    </span>
-                    <span className="px-2 py-1 bg-dark-bg-secondary text-dark-text rounded text-xs font-medium">
+                    </StatusBadge>
+                    <StatusBadge variant="default" size="md" rounded="default">
                       {tournament.type}
-                    </span>
+                    </StatusBadge>
                   </div>
                   <h4 className="font-semibold text-dark-text mb-1">{tournament.name}</h4>
                   <div className="flex items-center text-xs text-dark-text-secondary space-x-3">
@@ -215,7 +225,7 @@ const OrganizerDashboard = () => {
                   <span className="text-sm font-bold text-brand-primary">₱{tournament.revenue.toLocaleString()}</span>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
@@ -231,7 +241,7 @@ const OrganizerDashboard = () => {
             View All
           </button>
         </div>
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden border border-dark-border">
+        <Card noPadding className="overflow-hidden">
           {recentRegistrations.map((reg, index) => (
             <div
               key={reg.id}
@@ -250,7 +260,7 @@ const OrganizerDashboard = () => {
               </div>
             </div>
           ))}
-        </div>
+        </Card>
       </div>
 
       {/* Surveys & Rewards */}

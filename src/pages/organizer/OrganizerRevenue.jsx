@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { IoCash, IoTrendingUp, IoCalendar, IoDownload, IoCar, IoTrophy } from 'react-icons/io5'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const OrganizerRevenue = () => {
   const [period, setPeriod] = useState('month')
@@ -104,26 +106,25 @@ const OrganizerRevenue = () => {
           <div className="text-2xl font-bold">₱{summary.total.toLocaleString()}</div>
           <div className="text-xs opacity-90">Total Revenue</div>
         </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 border border-dark-border">
+        <Card padding="p-4">
           <IoTrendingUp className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">₱{summary.thisMonth.toLocaleString()}</div>
           <div className="text-xs text-dark-text-secondary">This Month</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoTrophy className="text-2xl text-brand-primary mb-2" />
           <div className="text-2xl font-bold text-dark-text">{summary.tournaments}</div>
           <div className="text-xs text-dark-text-secondary">Total Tournaments</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 border border-dark-border">
+        </Card>
+        <Card padding="p-4">
           <IoCash className="text-2xl text-yellow-600 mb-2" />
           <div className="text-2xl font-bold text-dark-text">₱{summary.pending.toLocaleString()}</div>
           <div className="text-xs text-dark-text-secondary">Pending</div>
-        </div>
+        </Card>
       </div>
 
       {/* Revenue Trend Chart */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-dark-text mb-4">Revenue Trend</h3>
+      <Card title="Revenue Trend" padding="p-6">
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -133,11 +134,10 @@ const OrganizerRevenue = () => {
             <Line type="monotone" dataKey="revenue" stroke="#9333ea" strokeWidth={3} dot={{ fill: '#9333ea', r: 4 }} />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      </Card>
 
       {/* Tournament Revenue Breakdown */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-dark-text mb-4">Revenue by Tournament</h3>
+      <Card title="Revenue by Tournament" padding="p-6">
         <div className="space-y-4">
           {tournamentRevenue.map((tournament, index) => (
             <div key={index}>
@@ -160,11 +160,10 @@ const OrganizerRevenue = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Recent Transactions */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-dark-text mb-4">Recent Transactions</h3>
+      <Card title="Recent Transactions" padding="p-6">
         <div className="space-y-3">
           {recentTransactions.map((transaction) => (
             <div key={transaction.id} className="flex items-center justify-between p-3 bg-dark-bg rounded-lg">
@@ -175,18 +174,18 @@ const OrganizerRevenue = () => {
               </div>
               <div className="text-right">
                 <div className="text-lg font-bold text-brand-primary">₱{transaction.amount}</div>
-                <span className={`text-xs px-2 py-1 rounded ${
-                  transaction.status === 'completed'
-                    ? 'bg-green-100 text-green-700'
-                    : 'bg-yellow-100 text-yellow-700'
-                }`}>
+                <StatusBadge
+                  variant={transaction.status === 'completed' ? 'success' : 'warning'}
+                  size="md"
+                  rounded="default"
+                >
                   {transaction.status}
-                </span>
+                </StatusBadge>
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Payout Info */}
       <div className="bg-brand-primary/10 border border-purple-200 rounded-xl p-4">

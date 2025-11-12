@@ -11,6 +11,8 @@ import {
   IoClose
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const CoachSubscription = () => {
   const navigate = useNavigate()
@@ -140,8 +142,10 @@ const CoachSubscription = () => {
             }`}
           >
             Yearly
-            <span className="absolute -top-2 -right-2 bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full">
-              Save 17%
+            <span className="absolute -top-2 -right-2">
+              <StatusBadge variant="success" size="sm" rounded="full">
+                Save 17%
+              </StatusBadge>
             </span>
           </button>
         </div>
@@ -158,8 +162,10 @@ const CoachSubscription = () => {
                 }`}
               >
                 {plan.popular && (
-                  <div className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">
-                    MOST POPULAR
+                  <div className="mb-4">
+                    <StatusBadge variant="success" size="md" rounded="full">
+                      MOST POPULAR
+                    </StatusBadge>
                   </div>
                 )}
 
@@ -198,8 +204,7 @@ const CoachSubscription = () => {
         </div>
 
         {/* Benefits */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-dark-text mb-4">Why Subscribe?</h3>
+        <Card title="Why Subscribe?" padding="p-6">
           <div className="space-y-4">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon
@@ -216,11 +221,10 @@ const CoachSubscription = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* FAQ */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-dark-text mb-4">Frequently Asked Questions</h3>
+        <Card title="Frequently Asked Questions" padding="p-6">
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-dark-text mb-1">Can I cancel anytime?</h4>
@@ -235,7 +239,7 @@ const CoachSubscription = () => {
               <p className="text-sm text-dark-text-secondary">Yes, you can change your plan at any time. Adjustments will be prorated.</p>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

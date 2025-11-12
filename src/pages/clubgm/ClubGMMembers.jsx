@@ -10,6 +10,7 @@ import {
   IoAdd,
   IoFunnel
 } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const ClubGMMembers = () => {
   const navigate = useNavigate()
@@ -167,7 +168,7 @@ const ClubGMMembers = () => {
       {/* Members List */}
       <div className="space-y-3">
         {filteredMembers.map((member) => (
-          <div key={member.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+          <Card key={member.id} padding="p-4">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-start space-x-3">
                 <img
@@ -220,14 +221,14 @@ const ClubGMMembers = () => {
                 <span className="text-dark-text-muted">Expires:</span> {member.expiryDate}
               </div>
             </div>
-          </div>
+          </Card>
         ))}
 
         {filteredMembers.length === 0 && (
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 text-center">
+          <Card padding="p-8" className="text-center">
             <IoPeople className="text-5xl text-gray-300 mx-auto mb-3" />
             <p className="text-dark-text-muted">No members found</p>
-          </div>
+          </Card>
         )}
         </div>
       </div>

@@ -15,6 +15,7 @@ import DashboardWelcomeBanner from '../../components/DashboardWelcomeBanner'
 import SubscriptionBanner from '../../components/SubscriptionBanner'
 import QuickActions from '../../components/QuickActions'
 import SurveySection from '../../components/SurveySection'
+import Card from '../../components/Card'
 import { surveys } from '../../data/surveyData'
 
 const SponsorDashboard = () => {
@@ -144,11 +145,11 @@ const SponsorDashboard = () => {
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <div key={index} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+              <Card key={index} padding="p-4">
                 <IconComponent className={`text-2xl text-${stat.color}-600 mb-2`} />
                 <div className="text-2xl font-bold text-dark-text">{stat.value}</div>
                 <div className="text-xs text-dark-text-secondary">{stat.label}</div>
-              </div>
+              </Card>
             )
           })}
         </div>
@@ -157,7 +158,7 @@ const SponsorDashboard = () => {
         <QuickActions actions={quickActions} />
 
         {/* Active Campaigns */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+        <Card padding="p-4">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-dark-text">Active Campaigns</h2>
             <button
@@ -212,7 +213,7 @@ const SponsorDashboard = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* Surveys & Rewards */}
         <SurveySection surveys={surveys} module="sponsor" />

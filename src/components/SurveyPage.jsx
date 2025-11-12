@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import PropTypes from 'prop-types';
-import {
-  IoCheckmarkCircle,
-  IoGift,
-  IoClipboard,
-} from "react-icons/io5";
+import PropTypes from "prop-types";
+import { IoCheckmarkCircle, IoGift, IoClipboard } from "react-icons/io5";
 import PageHeader from "./PageHeader";
 
 const SurveyPage = ({ module, surveyData }) => {
@@ -47,15 +43,14 @@ const SurveyPage = ({ module, surveyData }) => {
     return (
       <div className="min-h-screen bg-dark-bg pb-20">
         <div className="max-w-lg mx-auto">
-          <PageHeader
-            title="Survey Complete"
-            showBack={false}
-          />
+          <PageHeader title="Survey Complete" showBack={false} />
           <div className="p-4">
             <div className="flex items-center justify-center min-h-[70vh]">
               <div className="text-center">
                 <div className="mb-6 flex justify-center">
-                  <div className={`w-24 h-24 bg-gradient-to-br ${survey.gradient} rounded-full flex items-center justify-center`}>
+                  <div
+                    className={`w-24 h-24 bg-gradient-to-br ${survey.gradient} rounded-full flex items-center justify-center`}
+                  >
                     <IoCheckmarkCircle className="text-6xl text-white" />
                   </div>
                 </div>
@@ -92,41 +87,39 @@ const SurveyPage = ({ module, surveyData }) => {
 
   return (
     <div className="min-h-screen bg-dark-bg pb-20">
-      <div className="max-w-lg mx-auto">
-        {/* Header */}
-        <PageHeader
-          title={survey.title}
-          showBack={true}
-          backPath={`/${module}/dashboard`}
-        />
+      {/* Header */}
+      <PageHeader
+        title={survey.title}
+        showBack={true}
+        backPath={`/${module}/dashboard`}
+      />
 
+      <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Progress Section */}
-        <div className="bg-dark-bg-secondary border-b border-dark-border">
-          <div className="p-4">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <survey.icon className="text-xl text-brand-primary" />
-                <span className="text-sm font-medium text-dark-text-secondary">
-                  Question {currentQuestion + 1} of {totalQuestions}
-                </span>
-              </div>
-              <span className="text-sm font-medium text-brand-primary">
-                {Math.round(progress)}%
+        <div className="bg-dark-bg-secondary p-4 rounded-md border-b border-dark-border">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <survey.icon className="text-xl text-brand-primary" />
+              <span className="text-sm font-medium text-dark-text-secondary">
+                Question {currentQuestion + 1} of {totalQuestions}
               </span>
             </div>
+            <span className="text-sm font-medium text-brand-primary">
+              {Math.round(progress)}%
+            </span>
+          </div>
 
-            {/* Progress Bar */}
-            <div className="relative h-2 bg-dark-bg-tertiary rounded-full overflow-hidden">
-              <div
-                className={`absolute top-0 left-0 h-full bg-gradient-to-r ${survey.gradient} transition-all duration-300`}
-                style={{ width: `${progress}%` }}
-              />
-            </div>
+          {/* Progress Bar */}
+          <div className="relative h-2 bg-dark-bg-tertiary rounded-full overflow-hidden">
+            <div
+              className={`absolute top-0 left-0 h-full bg-gradient-to-r ${survey.gradient} transition-all duration-300`}
+              style={{ width: `${progress}%` }}
+            />
           </div>
         </div>
 
         {/* Survey Content */}
-        <div className="p-4 space-y-6">
+        <div className="space-y-6">
           {/* Survey Banner */}
           <div className="relative rounded-xl overflow-hidden shadow-lg">
             <img

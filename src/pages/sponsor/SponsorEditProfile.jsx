@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoBriefcase, IoMail, IoCall, IoLocationSharp, IoGlobe, IoCamera, IoSave, IoText, IoPerson } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const SponsorEditProfile = () => {
   const navigate = useNavigate()
@@ -110,8 +111,7 @@ const SponsorEditProfile = () => {
       <div className="max-w-lg mx-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Profile Picture */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Company Logo</h3>
+          <Card title="Company Logo" padding="p-6">
             <div className="flex flex-col items-center">
               <div className="relative mb-4">
                 <div className="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center overflow-hidden">
@@ -139,11 +139,10 @@ const SponsorEditProfile = () => {
                 Click the camera icon to upload a new logo
               </p>
             </div>
-          </div>
+          </Card>
 
           {/* Company Information */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Company Information</h3>
+          <Card title="Company Information" padding="p-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-dark-text mb-2">
@@ -279,11 +278,10 @@ const SponsorEditProfile = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Business Details */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Business Details</h3>
+          <Card title="Business Details" padding="p-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-dark-text mb-2">
@@ -308,11 +306,10 @@ const SponsorEditProfile = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Bio */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">About</h3>
+          <Card title="About" padding="p-6">
             <div>
               <label className="block text-sm font-medium text-dark-text mb-2">
                 Company Description
@@ -341,11 +338,10 @@ const SponsorEditProfile = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Sports Interests */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Sports Interests</h3>
+          <Card title="Sports Interests" padding="p-6">
             <p className="text-sm text-dark-text-secondary mb-4">Select the sports you are interested in sponsoring</p>
             <div className="grid grid-cols-2 gap-3">
               {availableSports.map((sport) => (
@@ -363,10 +359,10 @@ const SponsorEditProfile = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </Card>
 
           {/* Save Button */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4">
+          <Card padding="p-4">
             <button
               type="submit"
               disabled={isLoading}
@@ -383,7 +379,7 @@ const SponsorEditProfile = () => {
                 </>
               )}
             </button>
-          </div>
+          </Card>
         </form>
       </div>
     </div>

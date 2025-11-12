@@ -12,6 +12,7 @@ import {
   IoLocationSharp,
   IoTime
 } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const ClubGMProfile = () => {
   const navigate = useNavigate()
@@ -58,7 +59,7 @@ const ClubGMProfile = () => {
     <div className="min-h-screen bg-dark-bg pb-20">
       <div className="max-w-lg mx-auto p-4 space-y-6">
         {/* Profile Header */}
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden">
+        <Card noPadding className="overflow-hidden">
           <div className="h-24 bg-gradient-to-r from-orange-600 to-amber-600"></div>
           <div className="relative px-4 pb-4">
             <img
@@ -94,31 +95,29 @@ const ClubGMProfile = () => {
               </button>
             </div>
           </div>
-        </div>
+        </Card>
 
         {/* About */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-3">About</h2>
+        <Card title="About" padding="p-4">
           <p className="text-sm text-dark-text-secondary">{profile.bio}</p>
-        </div>
+        </Card>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <div key={index} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+              <Card key={index} padding="p-4">
                 <IconComponent className={`text-2xl text-${stat.color}-600 mb-2`} />
                 <div className="text-2xl font-bold text-dark-text">{stat.value}</div>
                 <div className="text-xs text-dark-text-secondary">{stat.label}</div>
-              </div>
+              </Card>
             )
           })}
         </div>
 
         {/* Programs */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Programs</h2>
+        <Card title="Programs" padding="p-4">
           <div className="space-y-3">
             {programs.map((program, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-dark-bg rounded-lg">
@@ -130,11 +129,10 @@ const ClubGMProfile = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Achievements */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Achievements & Awards</h2>
+        <Card title="Achievements & Awards" padding="p-4">
           <div className="grid grid-cols-2 gap-2">
             {achievements.map((achievement, index) => (
               <div key={index} className="flex items-center space-x-2 p-2 bg-brand-primary/10 rounded-lg">
@@ -143,11 +141,10 @@ const ClubGMProfile = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Contact Information */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Contact Information</h2>
+        <Card title="Contact Information" padding="p-4">
           <div className="space-y-3">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon
@@ -162,7 +159,7 @@ const ClubGMProfile = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* Member Since */}
         <div className="text-center py-4">

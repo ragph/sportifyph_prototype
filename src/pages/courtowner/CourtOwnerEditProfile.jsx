@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoStorefront, IoMail, IoCall, IoLocationSharp, IoTime, IoCamera, IoSave, IoText, IoPerson } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const CourtOwnerEditProfile = () => {
   const navigate = useNavigate()
@@ -100,8 +101,7 @@ const CourtOwnerEditProfile = () => {
       <div className="max-w-lg mx-auto p-4">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Profile Picture */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Facility Logo</h3>
+          <Card title="Facility Logo" padding="p-6">
             <div className="flex flex-col items-center">
               <div className="relative mb-4">
                 <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center overflow-hidden">
@@ -129,11 +129,10 @@ const CourtOwnerEditProfile = () => {
                 Click the camera icon to upload a new logo
               </p>
             </div>
-          </div>
+          </Card>
 
           {/* Facility Information */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Facility Information</h3>
+          <Card title="Facility Information" padding="p-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-dark-text mb-2">
@@ -250,11 +249,10 @@ const CourtOwnerEditProfile = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Facility Details */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">Facility Details</h3>
+          <Card title="Facility Details" padding="p-6">
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-dark-text mb-2">
@@ -299,11 +297,10 @@ const CourtOwnerEditProfile = () => {
                 )}
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Bio */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-dark-text mb-4">About</h3>
+          <Card title="About" padding="p-6">
             <div>
               <label className="block text-sm font-medium text-dark-text mb-2">
                 Facility Description
@@ -332,10 +329,10 @@ const CourtOwnerEditProfile = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Card>
 
           {/* Save Button */}
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4">
+          <Card padding="p-4">
             <button
               type="submit"
               disabled={isLoading}
@@ -352,7 +349,7 @@ const CourtOwnerEditProfile = () => {
                 </>
               )}
             </button>
-          </div>
+          </Card>
         </form>
       </div>
     </div>

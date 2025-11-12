@@ -20,6 +20,8 @@ import SubscriptionBanner from "../../components/SubscriptionBanner";
 import Carousel from "../../components/Carousel";
 import QuickActions from "../../components/QuickActions";
 import SurveySection from "../../components/SurveySection";
+import Card from "../../components/Card";
+import StatusBadge from "../../components/StatusBadge";
 import { surveys } from "../../data/surveyData";
 
 const PlayerDashboard = () => {
@@ -210,9 +212,9 @@ const PlayerDashboard = () => {
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <span className="px-2 py-1 bg-yellow-400 text-slate-950 rounded text-xs font-medium">
+                    <StatusBadge variant="warning">
                       {match.type}
-                    </span>
+                    </StatusBadge>
                     <h3 className="font-semibold text-dark-text mt-2">
                       {match.name}
                     </h3>
@@ -257,10 +259,7 @@ const PlayerDashboard = () => {
           </div>
           <div className="space-y-3">
             {joinedTournaments.map((tournament) => (
-              <div
-                key={tournament.id}
-                className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border flex items-center justify-between"
-              >
+              <Card key={tournament.id} padding="p-4" className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                     <IoTrophy className="text-xl text-white" />
@@ -275,7 +274,7 @@ const PlayerDashboard = () => {
                   </div>
                 </div>
                 <IoArrowForward className="text-dark-text-muted" />
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -288,7 +287,7 @@ const PlayerDashboard = () => {
               Full Table
             </button>
           </div>
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm overflow-hidden border border-dark-border">
+          <Card noPadding className="overflow-hidden">
             <table className="w-full">
               <thead className="bg-dark-bg-secondary">
                 <tr>
@@ -339,7 +338,7 @@ const PlayerDashboard = () => {
                 ))}
               </tbody>
             </table>
-          </div>
+          </Card>
         </div>
 
         {/* Recommended Coaches */}
@@ -354,10 +353,7 @@ const PlayerDashboard = () => {
           </div>
           <div className="space-y-3">
             {recommendedCoaches.map((coach) => (
-              <div
-                key={coach.id}
-                className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border flex items-center justify-between"
-              >
+              <Card key={coach.id} padding="p-4" className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <img
                     src={coach.avatar}
@@ -385,7 +381,7 @@ const PlayerDashboard = () => {
                 <button className="px-4 py-2 bg-brand-accent hover:bg-brand-accent-light text-white rounded-lg text-xs font-medium transition-all">
                   Book
                 </button>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -402,10 +398,7 @@ const PlayerDashboard = () => {
           </div>
           <div className="grid grid-cols-2 gap-3">
             {recommendedClubs.map((club) => (
-              <div
-                key={club.id}
-                className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border"
-              >
+              <Card key={club.id} padding="p-4">
                 <img
                   src={club.logo}
                   alt={club.name}
@@ -424,7 +417,7 @@ const PlayerDashboard = () => {
                 <button className="w-full mt-3 py-2 bg-dark-bg-hover hover:bg-dark-border text-dark-text rounded-lg text-xs font-medium">
                   View Club
                 </button>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -474,10 +467,7 @@ const PlayerDashboard = () => {
           </div>
           <div className="space-y-3">
             {news.map((item) => (
-              <div
-                key={item.id}
-                className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border flex items-center justify-between"
-              >
+              <Card key={item.id} padding="p-4" className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <img
                     src={item.image}
@@ -494,7 +484,7 @@ const PlayerDashboard = () => {
                   </div>
                 </div>
                 <IoArrowForward className="text-dark-text-muted" />
-              </div>
+              </Card>
             ))}
           </div>
         </div>

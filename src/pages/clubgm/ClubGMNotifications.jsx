@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 import {
   IoPeople,
   IoCalendar,
@@ -144,11 +145,12 @@ const ClubGMNotifications = () => {
           {filteredNotifications.map((notification) => {
             const IconComponent = notification.icon
             return (
-              <div
+              <Card
                 key={notification.id}
-                className={`bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border ${
-                  notification.read ? 'border-dark-border' : 'border-orange-200 bg-brand-primary/10/30'
-                }`}
+                padding="p-4"
+                className={
+                  notification.read ? '' : 'border-orange-200 bg-brand-primary/10/30'
+                }
               >
                 <div className="flex items-start space-x-3">
                   <div className={`w-10 h-10 rounded-full bg-dark-bg-secondary flex items-center justify-center flex-shrink-0`}>
@@ -168,15 +170,15 @@ const ClubGMNotifications = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Card>
             )
           })}
 
           {filteredNotifications.length === 0 && (
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 text-center">
+            <Card padding="p-8" className="text-center">
               <IoCheckmarkCircle className="text-5xl text-gray-300 mx-auto mb-3" />
               <p className="text-dark-text-muted">No notifications</p>
-            </div>
+            </Card>
           )}
         </div>
       </div>

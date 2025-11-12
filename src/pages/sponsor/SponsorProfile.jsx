@@ -11,6 +11,7 @@ import {
   IoGlobe,
   IoLocationSharp
 } from 'react-icons/io5'
+import Card from '../../components/Card'
 
 const SponsorProfile = () => {
   const navigate = useNavigate()
@@ -98,28 +99,26 @@ const SponsorProfile = () => {
         </div>
 
         {/* About */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-3">About</h2>
+        <Card title="About" padding="p-4">
           <p className="text-sm text-dark-text-secondary">{profile.bio}</p>
-        </div>
+        </Card>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <div key={index} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm border border-dark-border">
+              <Card key={index} padding="p-4">
                 <IconComponent className={`text-2xl text-${stat.color}-600 mb-2`} />
                 <div className="text-2xl font-bold text-dark-text">{stat.value}</div>
                 <div className="text-xs text-dark-text-secondary">{stat.label}</div>
-              </div>
+              </Card>
             )
           })}
         </div>
 
         {/* Sponsorship Types */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Sponsorship Types</h2>
+        <Card title="Sponsorship Types" padding="p-4">
           <div className="space-y-3">
             {sponsorshipTypes.map((type, index) => (
               <div key={index} className="flex items-center justify-between p-3 bg-dark-bg rounded-lg">
@@ -131,11 +130,10 @@ const SponsorProfile = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Industries */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Industries</h2>
+        <Card title="Industries" padding="p-4">
           <div className="grid grid-cols-2 gap-2">
             {industries.map((industry, index) => (
               <div key={index} className="flex items-center space-x-2 p-2 bg-indigo-50 rounded-lg">
@@ -144,11 +142,10 @@ const SponsorProfile = () => {
               </div>
             ))}
           </div>
-        </div>
+        </Card>
 
         {/* Contact Information */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
-          <h2 className="text-lg font-bold text-dark-text mb-4">Contact Information</h2>
+        <Card title="Contact Information" padding="p-4">
           <div className="space-y-3">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon
@@ -163,7 +160,7 @@ const SponsorProfile = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* Member Since */}
         <div className="text-center py-4">

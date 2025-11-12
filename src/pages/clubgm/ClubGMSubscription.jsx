@@ -11,6 +11,8 @@ import {
   IoClose
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const ClubGMSubscription = () => {
   const navigate = useNavigate()
@@ -120,7 +122,7 @@ const ClubGMSubscription = () => {
         )}
 
         {/* Plan Toggle */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-1 shadow-sm flex">
+        <Card noPadding className="p-1 flex">
           <button
             onClick={() => setSelectedPlan('monthly')}
             className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
@@ -140,26 +142,29 @@ const ClubGMSubscription = () => {
             }`}
           >
             Yearly
-            <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full">
-              Save 17%
+            <span className="absolute -top-2 -right-2">
+              <StatusBadge variant="orange" size="sm" rounded="full">
+                Save 17%
+              </StatusBadge>
             </span>
           </button>
-        </div>
+        </Card>
 
         {/* Plans */}
         <div className="space-y-4">
           {plans
             .filter(plan => plan.id === selectedPlan)
             .map((plan) => (
-              <div
+              <Card
                 key={plan.id}
-                className={`bg-dark-bg-tertiary rounded-xl p-6 shadow-lg ${
-                  plan.popular ? 'border-2 border-orange-600' : 'border border-dark-border'
-                }`}
+                padding="p-6"
+                className={plan.popular ? 'border-2 border-orange-600' : ''}
               >
                 {plan.popular && (
-                  <div className="bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4">
-                    MOST POPULAR
+                  <div className="mb-4">
+                    <StatusBadge variant="orange" size="md" rounded="full">
+                      MOST POPULAR
+                    </StatusBadge>
                   </div>
                 )}
 
@@ -193,13 +198,12 @@ const ClubGMSubscription = () => {
                 >
                   Subscribe Now
                 </button>
-              </div>
+              </Card>
             ))}
         </div>
 
         {/* Benefits */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-dark-text mb-4">Why Subscribe?</h3>
+        <Card title="Why Subscribe?" padding="p-6">
           <div className="space-y-4">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon
@@ -216,11 +220,10 @@ const ClubGMSubscription = () => {
               )
             })}
           </div>
-        </div>
+        </Card>
 
         {/* FAQ */}
-        <div className="bg-dark-bg-tertiary rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-dark-text mb-4">Frequently Asked Questions</h3>
+        <Card title="Frequently Asked Questions" padding="p-6">
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-dark-text mb-1">Can I cancel anytime?</h4>
@@ -235,7 +238,7 @@ const ClubGMSubscription = () => {
               <p className="text-sm text-dark-text-secondary">Yes, you can change your plan at any time. Adjustments will be prorated.</p>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )

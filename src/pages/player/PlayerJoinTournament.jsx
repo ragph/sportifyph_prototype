@@ -13,6 +13,8 @@ import {
   IoChevronForward
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerJoinTournament = () => {
   const navigate = useNavigate()
@@ -206,12 +208,12 @@ const PlayerJoinTournament = () => {
                   <div>
                     <h2 className="text-xl font-bold text-dark-text">{tournament.name}</h2>
                     <div className="flex items-center space-x-2 mt-1">
-                      <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">
+                      <StatusBadge variant="info-light" size="sm">
                         {tournament.category}
-                      </span>
-                      <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">
+                      </StatusBadge>
+                      <StatusBadge variant="success-light" size="sm">
                         {tournament.skill}
-                      </span>
+                      </StatusBadge>
                     </div>
                   </div>
                 </div>
@@ -262,9 +264,7 @@ const PlayerJoinTournament = () => {
         {/* Step 2: Team Selection */}
         {step === 2 && (
           <div className="space-y-4">
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-dark-text mb-4">Team Information</h2>
-
+            <Card title="Team Information" padding="p-6">
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-dark-text mb-3">
@@ -357,16 +357,14 @@ const PlayerJoinTournament = () => {
                   </>
                 )}
               </div>
-            </div>
+            </Card>
           </div>
         )}
 
         {/* Step 3: Payment */}
         {step === 3 && (
           <div className="space-y-4">
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-dark-text mb-4">Payment Method</h2>
-
+            <Card title="Payment Method" padding="p-6">
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   <button
@@ -505,16 +503,14 @@ const PlayerJoinTournament = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         )}
 
         {/* Step 4: Confirmation */}
         {step === 4 && (
           <div className="space-y-4">
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-dark-text mb-4">Review & Confirm</h2>
-
+            <Card title="Review & Confirm" padding="p-6">
               <div className="space-y-4">
                 <div className="bg-dark-bg rounded-lg p-4">
                   <h3 className="font-semibold text-dark-text text-sm mb-2">Tournament</h3>
@@ -553,7 +549,7 @@ const PlayerJoinTournament = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         )}
 

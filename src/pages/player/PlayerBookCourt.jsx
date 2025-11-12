@@ -15,6 +15,7 @@ import {
   IoChevronForward
 } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
 
 const PlayerBookCourt = () => {
   const navigate = useNavigate()
@@ -306,9 +307,7 @@ const PlayerBookCourt = () => {
         {/* Step 2: Date & Time */}
         {step === 2 && (
           <div className="space-y-4">
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-dark-text mb-4">Select Date & Time</h2>
-
+            <Card title="Select Date & Time" padding="p-6">
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-dark-text mb-2">
@@ -381,8 +380,7 @@ const PlayerBookCourt = () => {
                   )}
                 </div>
               </div>
-            </div>
-
+            </Card>
             <div className="bg-brand-primary/10 border border-blue-200 rounded-xl p-4">
               <div className="flex justify-between items-center">
                 <div>
@@ -400,9 +398,7 @@ const PlayerBookCourt = () => {
         {/* Step 3: Payment */}
         {step === 3 && (
           <div className="space-y-4">
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-dark-text mb-4">Payment Method</h2>
-
+            <Card title="Payment Method" padding="p-6">
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   <button
@@ -537,16 +533,14 @@ const PlayerBookCourt = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         )}
 
         {/* Step 4: Confirmation */}
         {step === 4 && (
           <div className="space-y-4">
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-dark-text mb-4">Review Booking</h2>
-
+            <Card title="Review Booking" padding="p-6">
               <div className="space-y-4">
                 <div className="bg-dark-bg rounded-lg p-4">
                   <h3 className="font-semibold text-dark-text text-sm mb-2">Court</h3>
@@ -586,8 +580,7 @@ const PlayerBookCourt = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
+            </Card>
             <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex items-start space-x-3">
               <IoInformationCircle className="text-2xl text-yellow-600 flex-shrink-0 mt-0.5" />
               <div>

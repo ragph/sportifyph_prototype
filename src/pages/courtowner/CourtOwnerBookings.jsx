@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { IoCalendar, IoTime, IoStorefront, IoCash, IoPerson, IoCheckmarkCircle, IoCloseCircle, IoTime as IoTimePending } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const CourtOwnerBookings = () => {
   const [filter, setFilter] = useState('all')
@@ -165,32 +167,34 @@ const CourtOwnerBookings = () => {
         {/* Bookings List */}
         <div className="space-y-4">
           {filteredBookings.map((booking) => (
-            <div key={booking.id} className="bg-dark-bg-tertiary rounded-xl p-4 shadow-sm">
+            <Card key={booking.id} padding="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <h3 className="font-bold text-dark-text">{booking.courtName}</h3>
                   <div className="flex items-center space-x-2 mt-1">
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      booking.status === 'confirmed'
-                        ? 'bg-green-100 text-green-700'
-                        : booking.status === 'pending'
-                        ? 'bg-yellow-100 text-yellow-700'
-                        : 'bg-red-100 text-red-700'
-                    }`}>
+                    <StatusBadge
+                      variant={
+                        booking.status === 'confirmed' ? 'success' :
+                        booking.status === 'pending' ? 'warning' : 'error'
+                      }
+                      size="md"
+                      rounded="full"
+                    >
                       {booking.status === 'confirmed' && <IoCheckmarkCircle className="inline mr-1" />}
                       {booking.status === 'pending' && <IoTimePending className="inline mr-1" />}
                       {booking.status === 'cancelled' && <IoCloseCircle className="inline mr-1" />}
                       {booking.status}
-                    </span>
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      booking.paymentStatus === 'paid'
-                        ? 'bg-green-100 text-green-700'
-                        : booking.paymentStatus === 'pending'
-                        ? 'bg-yellow-100 text-yellow-700'
-                        : 'bg-dark-bg-secondary text-dark-text'
-                    }`}>
+                    </StatusBadge>
+                    <StatusBadge
+                      variant={
+                        booking.paymentStatus === 'paid' ? 'success' :
+                        booking.paymentStatus === 'pending' ? 'warning' : 'default'
+                      }
+                      size="md"
+                      rounded="full"
+                    >
                       {booking.paymentStatus}
-                    </span>
+                    </StatusBadge>
                   </div>
                 </div>
                 <div className="text-right">
@@ -226,7 +230,7 @@ const CourtOwnerBookings = () => {
                   </button>
                 </div>
               )}
-            </div>
+            </Card>
           ))}
         </div>
       </div>

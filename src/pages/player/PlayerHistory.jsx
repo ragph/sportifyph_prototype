@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerHistory = () => {
   const [filter, setFilter] = useState('all')
@@ -102,7 +104,7 @@ const PlayerHistory = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-3">
+      <Card padding="p-3">
         <div className="flex space-x-2 overflow-x-auto">
           {filters.map((f) => (
             <button
@@ -119,7 +121,7 @@ const PlayerHistory = () => {
             </button>
           ))}
         </div>
-      </div>
+      </Card>
 
       {/* Timeline */}
       <div className="space-y-4">
@@ -131,7 +133,7 @@ const PlayerHistory = () => {
             )}
 
             {/* History Card */}
-            <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+            <Card padding="p-4">
               <div className="flex items-start space-x-4">
                 <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl flex-shrink-0`}>
                   {item.icon}
@@ -142,29 +144,29 @@ const PlayerHistory = () => {
                       <h3 className="font-semibold text-dark-text">{item.title}</h3>
                       <p className="text-xs text-dark-text-muted mt-1">{item.date}</p>
                     </div>
-                    <span className="px-2 py-1 bg-dark-bg-secondary text-dark-text rounded text-xs font-medium">
+                    <StatusBadge variant="default">
                       {item.result}
-                    </span>
+                    </StatusBadge>
                   </div>
                   <button className="text-sm text-brand-primary hover:underline">
                     View Details →
                   </button>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         ))}
       </div>
 
       {/* Empty State */}
       {filteredHistory.length === 0 && (
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-12 text-center">
+        <Card padding="p-12" className="text-center">
           <div className="text-6xl mb-4">📋</div>
           <h3 className="text-lg font-semibold text-dark-text mb-2">No History</h3>
           <p className="text-dark-text-secondary text-sm">
             No activity found for this filter
           </p>
-        </div>
+        </Card>
       )}
 
         {/* Load More */}

@@ -19,6 +19,8 @@ import DashboardWelcomeBanner from '../../components/DashboardWelcomeBanner'
 import SubscriptionBanner from '../../components/SubscriptionBanner'
 import QuickActions from '../../components/QuickActions'
 import SurveySection from '../../components/SurveySection'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 import { surveys } from '../../data/surveyData'
 
 const CoachDashboard = () => {
@@ -153,25 +155,25 @@ const CoachDashboard = () => {
 
       {/* Today's Stats */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-3 text-center border-l-4 border-l-brand-primary border-r border-r-dark-border border-t border-t-dark-border border-b border-b-dark-border hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
+        <Card padding="p-3" className="text-center border-l-4 border-l-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
           <div className="text-2xl font-bold text-brand-primary">{todayStats.sessions}</div>
           <div className="text-xs text-dark-text-secondary mt-1">Sessions</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-3 text-center border-l-4 border-l-brand-primary border-r border-r-dark-border border-t border-t-dark-border border-b border-b-dark-border hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
+        </Card>
+        <Card padding="p-3" className="text-center border-l-4 border-l-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
           <div className="text-2xl font-bold text-brand-primary">{todayStats.students}</div>
           <div className="text-xs text-dark-text-secondary mt-1">Students</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-3 text-center border-l-4 border-l-brand-primary border-r border-r-dark-border border-t border-t-dark-border border-b border-b-dark-border hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
+        </Card>
+        <Card padding="p-3" className="text-center border-l-4 border-l-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
           <div className="text-xl font-bold text-brand-primary">₱{todayStats.earnings}</div>
           <div className="text-xs text-dark-text-secondary mt-1">Earnings</div>
-        </div>
-        <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-3 text-center border-l-4 border-l-brand-primary border-r border-r-dark-border border-t border-t-dark-border border-b border-b-dark-border hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
+        </Card>
+        <Card padding="p-3" className="text-center border-l-4 border-l-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
           <div className="text-2xl font-bold text-brand-primary flex items-center justify-center">
             <IoStar className="mr-1" />
             {todayStats.rating}
           </div>
           <div className="text-xs text-dark-text-secondary mt-1">Rating</div>
-        </div>
+        </Card>
       </div>
 
       {/* Quick Actions */}
@@ -190,24 +192,21 @@ const CoachDashboard = () => {
         </div>
         <div className="space-y-3">
           {upcomingSessions.map((session) => (
-            <div key={session.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border-l-4 border-l-brand-primary border-r border-r-dark-border border-t border-t-dark-border border-b border-b-dark-border hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
+            <Card key={session.id} padding="p-4" className="border-l-4 border-l-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-1">
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      session.status === 'confirmed'
-                        ? 'bg-brand-primary/20 text-brand-primary ring-1 ring-brand-primary/30'
-                        : 'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {session.status === 'confirmed' ? (
-                        <><IoCheckmarkCircle className="inline mr-1" />Confirmed</>
-                      ) : (
-                        <><IoTime className="inline mr-1" />Pending</>
-                      )}
-                    </span>
-                    <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-medium">
+                    <StatusBadge
+                      variant={session.status === 'confirmed' ? 'primary' : 'warning'}
+                      size="md"
+                      rounded="default"
+                      icon={session.status === 'confirmed' ? <IoCheckmarkCircle /> : <IoTime />}
+                    >
+                      {session.status === 'confirmed' ? 'Confirmed' : 'Pending'}
+                    </StatusBadge>
+                    <StatusBadge variant="info-light" size="md" rounded="default">
                       {session.type}
-                    </span>
+                    </StatusBadge>
                   </div>
                   <h3 className="font-semibold text-dark-text">{session.student}</h3>
                 </div>
@@ -225,7 +224,7 @@ const CoachDashboard = () => {
                   <span>{session.duration}</span>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
@@ -271,9 +270,10 @@ const CoachDashboard = () => {
         </div>
         <div className="space-y-3">
           {recentStudents.map((student) => (
-            <div
+            <Card
               key={student.id}
-              className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border flex items-center justify-between"
+              padding="p-4"
+              className="flex items-center justify-between"
             >
               <div className="flex items-center space-x-3">
                 <img
@@ -287,17 +287,21 @@ const CoachDashboard = () => {
                 </div>
               </div>
               <div className="text-right">
-                <span className={`px-2 py-1 rounded text-xs font-medium ${
-                  student.progress === 'Excellent'
-                    ? 'bg-brand-primary/20 text-brand-primary ring-1 ring-brand-primary/30'
-                    : student.progress === 'Good'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-yellow-100 text-yellow-700'
-                }`}>
+                <StatusBadge
+                  variant={
+                    student.progress === 'Excellent'
+                      ? 'primary'
+                      : student.progress === 'Good'
+                      ? 'info-light'
+                      : 'warning'
+                  }
+                  size="md"
+                  rounded="default"
+                >
                   {student.progress}
-                </span>
+                </StatusBadge>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
         </div>

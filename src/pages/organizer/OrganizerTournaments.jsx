@@ -11,6 +11,8 @@ import {
   IoLocationSharp,
   IoArrowForward
 } from 'react-icons/io5'
+import Card from '../../components/Card'
+import StatusBadge from '../../components/StatusBadge'
 
 const OrganizerTournaments = () => {
   const navigate = useNavigate()
@@ -145,23 +147,33 @@ const OrganizerTournaments = () => {
       {/* Tournaments List */}
       <div className="space-y-3">
         {filteredTournaments.length === 0 ? (
-          <div className="bg-dark-bg-tertiary rounded-xl shadow-sm p-8 text-center">
+          <Card padding="p-8" className="text-center">
             <IoTrophy className="text-5xl text-gray-300 mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-dark-text mb-1">No tournaments found</h3>
             <p className="text-sm text-dark-text-secondary">Try adjusting your filters or create a new tournament</p>
-          </div>
+          </Card>
         ) : (
           filteredTournaments.map((tournament) => (
-            <div key={tournament.id} className="bg-dark-bg-tertiary rounded-xl shadow-sm p-4 border border-dark-border">
+            <Card key={tournament.id} padding="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${tournament.statusColor}`}>
+                    <StatusBadge
+                      variant={
+                        tournament.status === 'registration' ? 'success' :
+                        tournament.status === 'upcoming' ? 'info' :
+                        tournament.status === 'ongoing' ? 'purple' :
+                        tournament.status === 'completed' ? 'default' :
+                        'default'
+                      }
+                      size="md"
+                      rounded="default"
+                    >
                       {tournament.statusLabel}
-                    </span>
-                    <span className="px-2 py-1 bg-dark-bg-secondary text-dark-text rounded text-xs font-medium">
+                    </StatusBadge>
+                    <StatusBadge variant="default" size="md" rounded="default">
                       {tournament.sport}
-                    </span>
+                    </StatusBadge>
                   </div>
                   <h3 className="font-semibold text-dark-text mb-2">{tournament.name}</h3>
                   <div className="space-y-1 text-xs text-dark-text-secondary">
@@ -202,7 +214,7 @@ const OrganizerTournaments = () => {
                   <div className="text-sm font-bold text-brand-primary">₱{tournament.revenue.toLocaleString()}</div>
                 </div>
               </div>
-            </div>
+            </Card>
           ))
         )}
         </div>

@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { IoCalendar, IoLocation, IoPeople, IoCheckmarkCircle, IoCash, IoInformationCircle, IoShareSocial } from 'react-icons/io5'
 import PageHeader from '../../components/PageHeader'
+import StatusBadge from '../../components/StatusBadge'
 
 const PlayerTournamentDetails = () => {
   const navigate = useNavigate()
@@ -68,10 +69,15 @@ const PlayerTournamentDetails = () => {
             />
             {/* Status Badge on Image */}
             <div className="absolute top-4 left-4">
-              <span className="px-3 py-1.5 bg-brand-primary/90 text-white rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                <IoCheckmarkCircle />
+              <StatusBadge
+                variant="primary"
+                size="lg"
+                rounded="full"
+                icon={<IoCheckmarkCircle />}
+                className="font-bold shadow-lg bg-brand-primary/90"
+              >
                 {tournament.status}
-              </span>
+              </StatusBadge>
             </div>
           </div>
         )}
