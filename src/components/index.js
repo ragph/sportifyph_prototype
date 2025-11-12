@@ -1,0 +1,11 @@
+// Shared components for consistent design across all modules
+export { default as StatCard } from './StatCard'
+export { default as ToggleSwitch } from './ToggleSwitch'
+export { default as SettingsSection } from './SettingsSection'
+export { default as SettingsItem } from './SettingsItem'
+export { default as WelcomeBanner } from './WelcomeBanner'
+export { default as SubscriptionBanner } from './SubscriptionBanner'
+export { default as ActionButton } from './ActionButton'
+export { default as LogoutButton } from './LogoutButton'
+export { default as PageHeader } from './PageHeader'
+export { default as BaseSettings } from './BaseSettings'

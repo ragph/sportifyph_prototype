@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find src/pages -name \"*.jsx\" -type f -exec sh -c 'count=$(grep -c \"\"bg-dark-\\|text-dark-\"\" \"\"$1\"\" 2>/dev/null || echo 0); [ \"\"$count\"\" = \"\"0\"\" ] && echo \"\"$1\"\"' _ {} ;)",
+      "Bash(for file in organizer/OrganizerDashboard.jsx clubgm/ClubGMDashboard.jsx courtowner/CourtOwnerDashboard.jsx sponsor/SponsorDashboard.jsx)",
+      "Bash(do sed -i 's/text-purple-600/text-brand-accent/g; s/text-orange-600/text-brand-accent/g; s/text-red-600/text-brand-accent/g; s/text-indigo-600/text-brand-accent/g; s/text-green-600/text-brand-accent/g; s/text-blue-600/text-brand-accent/g; s/bg-blue-600 hover:bg-blue-700/bg-brand-accent hover:bg-brand-accent-dark/g; s/bg-green-600 hover:bg-green-700/bg-brand-accent hover:bg-brand-accent-dark/g; s/bg-purple-600 hover:bg-purple-700/bg-brand-accent hover:bg-brand-accent-dark/g; s/bg-orange-600 hover:bg-orange-700/bg-brand-accent hover:bg-brand-accent-dark/g' \"$file\")",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(for file in PlayerAchievements.jsx PlayerBookCourt.jsx PlayerBookTraining.jsx PlayerClubs.jsx PlayerEditProfile.jsx PlayerHistory.jsx PlayerJoinTournament.jsx PlayerNotifications.jsx PlayerProfile.jsx)",
+      "Bash(do sed -i 's/text-brand-accent/text-brand-primary/g; s/bg-brand-accent/bg-brand-primary/g; s/border-brand-accent/border-brand-primary/g; s/hover:bg-brand-accent/hover:bg-brand-primary/g; s/hover:text-brand-accent/hover:text-brand-primary/g; s/shadow-brand-accent/shadow-brand-primary/g; s/ring-brand-accent/ring-brand-primary/g' \"$file\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
